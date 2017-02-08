@@ -1,0 +1,17 @@
+<header class="container-fluid">
+  <button class="addButton fa fa-plus"></button>
+  <button class="profileButton fa fa-user-circle"></button>
+</header>
+<!-- <div class="spacer">
+
+</div> -->
+<div ng-repeat="convo in inboxCtrl.convoList" class=" animate-repeat col-xs-12 clearfix convo">
+  <div class="roomPic" style="background-image: url({{convo.imgUrl}})">
+    <!-- <img ng-src="{{convo.imgUrl}}" /> -->
+  </div>
+
+  <div class="messageContent">
+    <p class="messageContentRoom">{{convo.roomPeople}}</p>
+    <p class="messageContentPreview">{{convo.messagePreview}}</p>
+  </div>
+</div>

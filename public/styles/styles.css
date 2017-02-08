@@ -1,0 +1,161 @@
+@font-face {
+    font-family: leagueSpartan;
+    src: url(/fonts/LeagueSpartan-Bold.otf);
+}
+html, body,.view-animate-container,.view-animate {margin: 0; height: 100%; width:100%;overflow: hidden}
+
+
+/*----------------------LOGIN PAGE--------------------*/
+.addButton{
+  background-color: transparent;
+  border:none;
+  margin:30px;
+  font-size:9em;
+  color:white;
+}
+.profileButton{
+  background-color: transparent;
+  border:none;
+  margin:30px;
+  font-size:9em;
+  color:white;
+  float:right;
+}
+
+
+.loginMain{
+  /*display:flex;*/
+  /*align-content:center;*/
+  /*justify-content: center;*/
+height:100%;
+  background: #1f0077; /* Old browsers */
+  /*background: -moz-linear-gradient(top,  #1f0077 0%, #6e46bd 50%, #1f0077 100%);
+  background: -webkit-linear-gradient(top,  #1f0077 0%,#6e46bd 50%,#1f0077 100%);
+  background: linear-gradient(to top,  #1f0077 0%,#6e46bd 50%,#1f0077 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f0077', endColorstr='#1f0077',GradientType=1 );*/
+
+}
+#username,#password,#loginSubmit{
+  line-height: 70px;
+  font-size:40px;
+  margin-top:50px;
+  width:500px;
+  text-align: center;
+}
+#username,#password{
+  background-color:transparent;
+  border:none;
+  border-bottom:3px solid white;
+
+  color:white;
+}
+::-webkit-input-placeholder {
+   color: white;
+   font-family:"Helvetica",sans-serif;
+   font-weight: 100;
+   font-size:40px;
+}
+#loginCenter{
+  position:fixed;
+
+  top:50%;
+  left:50%;
+
+  width:800px;
+  background-color: transparent;
+  margin-left:-400px;
+  margin-top:-60%;
+  text-align: center;
+
+}
+#loginLogo{
+  font-size:9em;
+}
+#bulletinLogo{
+  height:100%;
+  width:100%;
+}
+#loginSubmit{
+  border:none;
+  background-color: #1a0055;
+font-size:40px;
+
+  color:white;
+}
+#forgot{
+  font-size:30px;
+  color:black;
+  margin-top:10px;
+}
+#loginFooter{
+  position:absolute;
+  text-align: center;
+  font-size:40px;
+  color:black;
+  bottom:0px;
+  width:100%;
+  margin-bottom:10px;
+}
+
+/*---------------------------END LOGIN--------------------------*/
+/*---------------------------INBOX--------------------------*/
+/*.spacer{
+  height:200px;
+  width:100%;
+}*/
+header{
+  background-color: rgb(31, 0, 119);
+  /*position:fixed;*/
+  width:100%;
+}
+
+.convo{
+
+  height:250px;
+}
+img{
+  height:100%;
+  display:block;
+  margin-left:auto;
+}
+.roomPic{
+  float:left;
+  height:200px;
+  width:200px;
+  margin:10px;
+  margin-top:25px;
+  border-radius:100px;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  overflow:hidden;
+
+}
+.clearfix::after{
+  content:"";
+  clear:both;
+  display:table;
+}
+.messageContent{
+float:left;
+
+}
+.messageContentRoom{
+  margin-top:50px;
+  font-size:50px;
+  font-family:"leagueSpartan",serif;
+
+}
+.messageContentPreview{
+  font-size:40px;
+  font-family:"Helvetica",serif;
+  font-weight:100;
+}
+
+
+
+
+
+/*---------------------------END INBOX--------------------------*/
