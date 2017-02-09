@@ -3,14 +3,17 @@
 
 
     <div id="loginLogo"><img id="bulletinLogo" src="/images/bulletin-white-transparent.png" /></div>
-    <div><input  placeholder="username" id="username" /></div>
-    <div><input  placeholder="password" type="password" id="password" /></div>
-    <button ng-click="loginCtrl.login()" id="loginSubmit" >Log in</button>
+    <form>
+
+      <div><input  ng-model="loginCtrl.username" placeholder="username" id="username" /></div>
+      <div><input  ng-model="loginCtrl.password" placeholder="password" type="password" id="password" /></div>
+      <button type="submit" ng-click="loginCtrl.login()" id="loginSubmit" >Log in</button>
+    </form>
     <p id="forgot">Forgot your Password?</p>
   </div>
   <div id="loginFooter">
 
-      Don't have an account? Create one.
+      Don't have an account? <<a href="/register">Create one.</a>
 
   </div>
 </div>

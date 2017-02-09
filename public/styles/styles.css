@@ -23,7 +23,7 @@ html, body,.view-animate-container,.view-animate {margin: 0; height: 100%; width
 }
 
 
-.loginMain{
+.loginMain,.regMain{
   /*display:flex;*/
   /*align-content:center;*/
   /*justify-content: center;*/
@@ -35,7 +35,7 @@ height:100%;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f0077', endColorstr='#1f0077',GradientType=1 );*/
 
 }
-#username,#password,#loginSubmit{
+#username,#password,#loginSubmit,#regSubmit{
   line-height: 70px;
   font-size:40px;
   margin-top:50px;
@@ -55,7 +55,7 @@ height:100%;
    font-weight: 100;
    font-size:40px;
 }
-#loginCenter{
+#loginCenter,#regCenter{
   position:fixed;
 
   top:50%;
@@ -75,7 +75,7 @@ height:100%;
   height:100%;
   width:100%;
 }
-#loginSubmit{
+#loginSubmit,#regSubmit{
   border:none;
   background-color: #1a0055;
 font-size:40px;

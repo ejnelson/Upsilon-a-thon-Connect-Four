@@ -10,6 +10,9 @@ app.config(function($routeProvider,$locationProvider){
   }).when('/photoview',{
     templateUrl:'views/pages/photoview.html',
     controller:'PhotoController as photoCtrl'
+  }).when('/register',{
+    templateUrl:'views/pages/register.html',
+    controller:'RegisterController as regCtrl'
   });
   $locationProvider.html5Mode(true);
 });
