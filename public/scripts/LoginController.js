@@ -13,6 +13,9 @@ angular.module("myApp").controller("LoginController", ['$location','$http',
         $location.path('/inbox');
 
       }, function(error) {
+        // alertify.alert('Wrong username or password');
+        alertify.alert('Wrong username or password');
+
         console.log('error loggin in', error);
       });
     };

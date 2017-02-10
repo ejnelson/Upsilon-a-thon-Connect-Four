@@ -8,6 +8,9 @@ module.exports = function(grunt) {
     copy: {
       files: {
         src: [
+          "node_modules/alertifyjs/build/alertify.min.js",
+          "node_modules/alertifyjs/build/css/alertify.min.css",
+          "node_modules/alertifyjs/build/css/themes/semantic.min.css",
           "node_modules/angular/angular.min.js",
           "node_modules/angular-route/angular-route.min.js",
           "node_modules/angular-animate/angular-animate.min.js"

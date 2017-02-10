@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alertifyjs": "^1.9.0",
     "angular": "^1.6.1",
     "angular-animate": "^1.6.1",
     "angular-route": "^1.6.1",

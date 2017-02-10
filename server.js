@@ -16,9 +16,9 @@ var session=require('express-session');
 var passport=require('passport');
 var path = require('path');
 var bodyParser = require('body-parser');
-var router = require('./routes/router');
+var router = require('./routes/private/router');
 var login = require('./routes/login');
-var register = require('./routes/register');
+var register = require('./routes//register');
 // var pg = require("pg");
 
 require('./auth/setup');
@@ -47,6 +47,22 @@ app.use('/register',register);
 app.get('/loginStatus',function(req,res){
   res.send(req.isAuthenticated());
 });
+
+
+//the following routes require authentication
+app.use('/private',ensureAuthenticated);
+
+app.get('/private/secretInfo',function(req,res){
+  res.send('this is secret');
+});
+
+function ensureAuthenticated(req,res,next){
+  if(req.isAuthenticated()){
+    next();
+  }else{
+    res.sendStatus(401);
+  }
+}
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/views/index.html');

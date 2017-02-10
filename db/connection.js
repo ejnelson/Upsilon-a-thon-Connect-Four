@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 exports.connect = function () {
-  mongoose.connect('mongodb://localhost/upsilon');
+  mongoose.connect('mongodb://localhost/primeproject');
 
   mongoose.connection.on('error', function(error){
     console.log('error connecting', error);

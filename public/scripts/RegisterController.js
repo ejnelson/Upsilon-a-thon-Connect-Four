@@ -11,8 +11,10 @@ angular.module("myApp").controller("RegisterController", ['$location','$http',
         }).then(function(response){
           console.log(response);
           $location.path('/inbox');
+            alertify.alert('Thanks for registering, here is your inbox.');
         }, function(error) {
-          console.log('error loggin in', error);
+          console.log('error registering in', error);
+          alertify.alert('Error');
         });
       };
 
