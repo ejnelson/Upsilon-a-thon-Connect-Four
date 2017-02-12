@@ -1,21 +1,26 @@
 var express = require("express");
 var router = express.Router();
-var Person = require('../../models/user');
+var User = require('../../models/user');
 
-router.get('/', function (req, res) {
-  Person.find({}, function (err, persons) {
-    if (err) {
-      res.sendStatus(500);
-      return;
+router.get('/:username', function (req, res) {
+  console.log(req.params.username);
+  User.find({username:req.params.username}, function (err, foundArray) {
+      console.log('what is in foundArray',foundArray+' '+foundArray.length);
+    if (typeof foundArray[0] !== 'undefined' && foundArray[0] !== null) {
+      res.send(true);
+    }else{
+
+      res.send(false);
     }
 
-    res.send(persons);
   });
 });
 
+
+
 router.post('/', function (req, res) {
   console.log('Req body', req.body);
-  var person = new Person(req.body);
+  var person = new User(req.body);
 
   person.save(function (err) {
     if (err) {
@@ -30,11 +35,15 @@ router.post('/', function (req, res) {
 
 
 router.put('/', function (req, res) {
-  console.log('help');
-  var id = req.body._id;
-  var person = new Person(req.body);
-  console.log('id received', id);
-  Person.findByIdAndUpdate(id, person,function (err) {
+  console.log('req.body',req.body);
+  console.log('req.user.id',req.user.id);
+  var id = req.user.id;
+
+  // User.findByIdAndUpdate(id, person,function (err) {
+    User.update(
+      {_id:id},
+      {$push:{contacts:req.body.contact}},
+    function(err){
       if (err) {
         res.sendStatus(500);
         return;
@@ -48,7 +57,7 @@ router.put('/', function (req, res) {
 router.delete('/:id', function (req, res) {
   var id = req.params.id;
   console.log('id received', id);
-  Person.findByIdAndRemove(id, function (err) {
+  User.findByIdAndRemove(id, function (err) {
       if (err) {
         res.sendStatus(500);
         return;

@@ -1,4 +1,5 @@
-angular.module("myApp").controller("LoginController", ['$location','$http',
+angular.module("myApp").controller("LoginController", [
+  '$location','$http',
   function($location,$http) {
     console.log('login controller loaded')
     var vm=this;

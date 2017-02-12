@@ -1,6 +1,6 @@
-angular.module('myApp').service('addContactService', function ($http,$location) {
+angular.module('myApp').service('getContactService', function ($http,$location) {
 
-      console.log('add contact service loaded');
+      console.log('get contact service loaded');
       //some way to send a post request to our server
       // this.getPeople=function(){
       //   console.log('get people');
@@ -22,28 +22,31 @@ angular.module('myApp').service('addContactService', function ($http,$location) 
       //   });
       // };
 
-      this.addContact=function(contactUsername){
-        console.log('add contact',contactUsername);
-        var data={contact:contactUsername};
-        $http.get('/router/'+contactUsername).then(function(res){
-              console.log('found',res.data);
-              if(res.data){
-                  $http.put('/router',data).then(function(res){
-                    console.log('return from user check',res);
-                    // res.data;
-                  }).catch(function(err){
-                    console.log("error changing person",err);
-                  });
-                  alertify.alert('Contact added succesfully');
-              }else{
-                alertify.alert('User does not exist');
-              }
+      this.getContacts=function(){
+
+        return $http.get('/getContacts').then(function(res){
+            console.log(res);
+            return res.data;
           }).catch(function(err){
             console.log("error getting people",err);
           });
-
       };
+      this.getContactsData=function(contactsArray){
 
+        return $http({
+          method: 'GET',
+          url: '/getContacts/getContactsData',
+          params: {
+             contacts: JSON.stringify(contactsArray)
+            // contacts: contactsArray
+          }}
+          ).then(function(res){
+            console.log('returned from data search with',res);
+            return res.data;
+          }).catch(function(err){
+            console.log("error getting contacts",err);
+          });
+      };
       // this.deletePerson=function(id){
       //   console.log('Delete person');
       //   $http.delete('/person/'+id).then(function(res){

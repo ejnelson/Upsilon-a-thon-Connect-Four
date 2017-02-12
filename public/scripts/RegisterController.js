@@ -14,7 +14,7 @@ angular.module("myApp").controller("RegisterController", ['$location','$http',
             alertify.alert('Thanks for registering, here is your inbox.');
         }, function(error) {
           console.log('error registering in', error);
-          alertify.alert('Error');
+          alertify.alert('ERROR: Username AND password required to register');
         });
       };
 

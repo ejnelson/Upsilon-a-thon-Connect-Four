@@ -3,7 +3,9 @@
     src: url(/fonts/LeagueSpartan-Bold.otf);
 }
 html, body,.view-animate-container,.view-animate {margin: 0; height: 100%; width:100%;overflow: hidden}
-
+*:focus {
+    outline: none;
+}
 
 /*----------------------LOGIN PAGE--------------------*/
 .addButton{
@@ -152,6 +154,7 @@ header{
   background-color: rgb(31, 0, 119);
   /*position:fixed;*/
   width:100%;
+
 }
 #addContainer{
   height:100%;
@@ -235,8 +238,26 @@ float:left;
   font-weight:100;
 }
 
+#contactFilter{
+  line-height: 70px;
+  font-size:40px;
+  width:500px;
+  text-align: center;
+  border:none;
+  border-bottom: 3px solid white;
+  background-color: transparent;
+  color:white;
+  /*margin-left:50px;*/
+}
+.contactUsername{
+  margin-top:50px;
+  font-size:50px;
+  font-family:"leagueSpartan",serif;
 
-
+}
+#convoHeader{
+  text-align: center;
+}
 
 
 /*---------------------------END INBOX--------------------------*/

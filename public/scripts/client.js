@@ -11,7 +11,7 @@ app.config(function($routeProvider,$locationProvider){
     resolve: {
       _: function ($location,$http) {
             $http.get('/loginStatus').then(function(res){
-              console.log('res.data',res.data);
+              console.log('res.data, logged in =',res.data);
               if(res.data){
                 console.log('user is logged in');
                 return;

@@ -17,6 +17,7 @@ var passport=require('passport');
 var path = require('path');
 var bodyParser = require('body-parser');
 var router = require('./routes/private/router');
+var getContacts = require('./routes/private/getContacts');
 var login = require('./routes/login');
 var register = require('./routes//register');
 // var pg = require("pg");
@@ -41,6 +42,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/router', router);
+app.use('/getContacts', getContacts);
 app.use('/login',login);
 app.use('/register',register);
 

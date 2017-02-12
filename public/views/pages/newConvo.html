@@ -1,0 +1,11 @@
+<header id="convoHeader" class="container-fluid">
+  <button class="addButton fa fa-plus"></button>
+  <input type="text" id="contactFilter" ng-model="contactSearch" placeholder="type username to search" />
+  <button class="profileButton fa fa-user-circle"></button>
+</header>
+
+
+<div ng-repeat="contact in inboxCtrl.contactList | filter:contactSearch| orderBy: 'username'" class="col-xs-12 clearfix">
+  <div class="contactPic" style="background-image: url({{contact.imgUrl}})"></div>
+  <div class="contactUsername">{{contact.username}}</div>
+</div>
