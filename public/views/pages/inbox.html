@@ -3,21 +3,23 @@
   <button ng-click="inboxCtrl.addConvo()" class="addSomethingButton"><span class="fa fa-comments"></span> New convo</button>
 </div>
 
-<header class="container-fluid">
+<header class="container-fluid" ng-init="inboxCtrl.findRooms()">
   <button ng-click="addContainer=true" class="addButton fa fa-plus"></button>
-  <button class="profileButton fa fa-user-circle"></button>
+  <button ng-click="inboxCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
 </header>
+<div class="spacer">
 
-<!-- <div class="spacer">
-
-</div> -->
-<div ng-repeat="convo in inboxCtrl.convoList" class=" animate-repeat col-xs-12 clearfix convo">
-  <div class="roomPic" style="background-image: url({{convo.imgUrl}})">
-    <!-- <img ng-src="{{convo.imgUrl}}" /> -->
+</div>
+<div ng-repeat="room in inboxCtrl.convoList" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
+  <div class="roomPic" style="background-image: url({{room.imgUrl}})">
+    <!-- <img ng-src="{{convo.imgUrl}}" /> --><span id="roomPicPlaceholder" class="profileButton fa fa-user-circle"></span>
   </div>
 
   <div class="messageContent">
-    <p class="messageContentRoom">{{convo.roomPeople}}</p>
-    <p class="messageContentPreview">{{convo.messagePreview}}</p>
+    <p class="messageContentRoom">
+      <span ng-repeat="name in room.usernames" ng-if="name!=inboxCtrl.userUsername">{{name}}  </span>
+    </p>
+    <p class="messageContentPreview">{{room.messages[0]}}
+    </p>
   </div>
 </div>

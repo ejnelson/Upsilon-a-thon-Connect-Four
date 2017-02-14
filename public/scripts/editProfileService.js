@@ -1,6 +1,6 @@
-angular.module('myApp').service('addContactService', function ($http,$location) {
+angular.module('myApp').service('editProfileService', function ($http,$location) {
 
-      console.log('add contact service loaded');
+      console.log('edit Profile service loaded');
       //some way to send a post request to our server
       // this.getPeople=function(){
       //   console.log('get people');
@@ -22,28 +22,30 @@ angular.module('myApp').service('addContactService', function ($http,$location) 
       //   });
       // };
 
-      this.addContact=function(contactUsername){
-        console.log('add contact',contactUsername);
-        var data={contact:contactUsername};
-        $http.get('/router/'+contactUsername).then(function(res){//check to see if user is in db
-              console.log('found',res.data);
-              if(res.data){
-                  $http.put('/router',data).then(function(res){//add user to contact list
-                    console.log('return from user check',res);
-                    // res.data;
-                  }).catch(function(err){
-                    console.log("error changing person",err);
-                  });
-                  alertify.alert('Contact added succesfully');
-              }else{
-                alertify.alert('User does not exist');
-              }
+      this.getProfile=function(){
+        return $http.get('/getProfileInfo').then(function(res){
+              return res;
+              console.log(vm.userprofile);
           }).catch(function(err){
             console.log("error getting people",err);
           });
 
       };
 
+      this.updateProfile=function (first,last,email,bio){
+          var data={
+            firstName:first,
+            lastName:last,
+            email:email,
+            bio:bio
+          }
+        return $http.put('/getProfileInfo',data).then(function(res){
+          console.log('return from user check',res);
+          return res.data;
+        }).catch(function(err){
+          console.log("error changing person",err);
+        });
+      }
       // this.deletePerson=function(id){
       //   console.log('Delete person');
       //   $http.delete('/person/'+id).then(function(res){

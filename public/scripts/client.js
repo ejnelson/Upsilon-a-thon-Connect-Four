@@ -36,6 +36,12 @@ app.config(function($routeProvider,$locationProvider){
   }).when('/newConvo',{
     templateUrl:'views/pages/newConvo.html',
     controller:'InboxController as inboxCtrl'
+  }).when('/editProfile',{
+    templateUrl:'views/pages/editProfile.html',
+    controller:'InboxController as inboxCtrl'
+  }).when('/roomView',{
+    templateUrl:'views/pages/roomView.html',
+    controller:'RoomController as roomCtrl'
   });
   $locationProvider.html5Mode(true);
 });

@@ -1,11 +1,18 @@
-<header id="convoHeader" class="container-fluid">
-  <button class="addButton fa fa-plus"></button>
-  <input type="text" id="contactFilter" ng-model="contactSearch" placeholder="type username to search" />
-  <button class="profileButton fa fa-user-circle"></button>
+<header ng-init="inboxCtrl.initAddConvo()" id="convoHeader" class="container-fluid">
+  <a href="/inbox" id="newConvoBack" class="backButton fa fa-arrow-left">&nbsp;</a>
+  <ul id="usersToAddToRoom">
+    <li ng-repeat="contactToAdd in inboxCtrl.contactsToAddList">{{contactToAdd.username}},</li>
+  </ul>
+  <div ng-click="inboxCtrl.createNewRoom()" id="newRoomButton"></div>
 </header>
+<div class="spacer">
 
+</div>
+<div id="searchForContact">
+  <input type="text" id="contactFilter" ng-model="contactSearch.username" placeholder="type username to search" />
+</div>
 
-<div ng-repeat="contact in inboxCtrl.contactList | filter:contactSearch| orderBy: 'username'" class="col-xs-12 clearfix">
+<div ng-repeat="contact in inboxCtrl.contactList | filter:contactSearch | orderBy: 'username'" class="col-xs-12 clearfix">
   <div class="contactPic" style="background-image: url({{contact.imgUrl}})"></div>
-  <div class="contactUsername">{{contact.username}}</div>
+  <div ng-click="inboxCtrl.addUserToAddList(contact)" class="contactUsername">{{contact.username}}</div>
 </div>

@@ -1,0 +1,25 @@
+
+<div id="editProfile" ng-init="inboxCtrl.editInit()">
+  <p id="profileUsername">
+    {{inboxCtrl.userProfile.username}}
+  </p>
+
+  <div class="profileInputDiv" id="firstName">
+    <label class="editProfileLabel">First Name:</label>
+    <input class="profileInput"  placeholder="First Name" ng-model="inboxCtrl.editFirstName" ng-value="inboxCtrl.userProfile.firstName" />
+  </div>
+  <div class="profileInputDiv" id="lastName">
+    <label class="editProfileLabel">Last Name:</label>
+    <input class="profileInput"  placeholder="Last Name" ng-model="inboxCtrl.editLastName" ng-value="inboxCtrl.userProfile.lastName" />
+  </div>
+  <div class="profileInputDiv"  id="email">
+    <label class="editProfileLabel">Email:</label>
+    <input class="profileInput" placeholder="Email" ng-model="inboxCtrl.editEmail" ng-value="inboxCtrl.userProfile.email" />
+  </div>
+  <div class="profileInputDiv" id="bio">
+    <label class="editProfileLabel">Bio:</label>
+    <textarea rows="5" class="profileInput" ng-model="inboxCtrl.editBio" placeholder="Bio" ng-value="inboxCtrl.userProfile.bio" ></textarea>
+  </div>
+  <button  class="profileEditButton" ng-click="inboxCtrl.submitNewProfile()" type="submit">Submit</button><br />
+  <button id="cancelNewProfile" class="profileEditButton" ng-click="inboxCtrl.cancelNewProfile()" type="submit">Cancel</button>
+</div>

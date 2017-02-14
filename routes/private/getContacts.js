@@ -14,10 +14,16 @@ router.get('/', function (req, res) {
 
 router.get('/getContactsData', function (req, res) {
   console.log('getting contacts Data from db',req.query.contacts);
-  User.find({username:{$in:req.query.contacts}}, function (err, contactsArray) {
+  var query=JSON.parse(req.query.contacts);
+  console.log(Array.isArray(query));
+  User.find({username:{$in:query}}, function (err, contactsArray) {
+    if(err){
+      console.log('error finding contacts Data',err);
+      return;
+    }else{
       console.log('what is in contactsArray',contactsArray+' '+contactsArray.length);
-    res.send(contactsArray);
-
+      res.send(contactsArray);
+    }
   });
 });
 

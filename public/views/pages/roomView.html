@@ -1,0 +1,9 @@
+<header class="container-fluid" ng-init="roomCtrl.getMessages()">
+  <button ng-click="roomCtrl.backToInbox()" class="addButton fa fa-arrow-left"></button>
+  <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
+</header>
+
+<ul id="messages"><li ng-repeat="message in roomCtrl.messages track by $index">{{message}}</li></ul>
+<form id="messageSend" action="">
+  <input id="m" ng-model="roomCtrl.message" autocomplete="off" /><button ng-click="roomCtrl.send($event)">Send</button>
+</form>

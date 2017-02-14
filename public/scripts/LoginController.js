@@ -1,11 +1,15 @@
 angular.module("myApp").controller("LoginController", [
-  '$location','$http',
-  function($location,$http) {
+  '$location','$http','usernameStoreService',
+  function($location,$http,usernameStoreService) {
     console.log('login controller loaded')
     var vm=this;
 
+
     vm.login = function() {
+
+
       console.log('logging in');
+      usernameStoreService.storeUsername(vm.username);
       $http.post('/login', {
         username: vm.username,
         password: vm.password
