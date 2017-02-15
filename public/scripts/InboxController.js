@@ -32,6 +32,11 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
       roomViewService.setRoomId(id);
       $location.path('/roomView');
     }
+    // vm.goToPhotoView=function(id){
+    //   console.log('this is the room we are going to',id)
+    //   roomViewService.setRoomId(id);
+    //   $location.path('/photoView');
+    // }
 
     // vm.contactList=[
     //   {imgUrl:"/images/ollie.jpg",username:"Ollie"},

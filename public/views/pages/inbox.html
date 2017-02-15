@@ -19,7 +19,7 @@
     <p class="messageContentRoom">
       <span ng-repeat="name in room.usernames" ng-if="name!=inboxCtrl.userUsername">{{name}}  </span>
     </p>
-    <p class="messageContentPreview">{{room.messages[0]}}
+    <p class="messageContentPreview">{{room.messages[room.messages.length - 1].text}}
     </p>
   </div>
 </div>

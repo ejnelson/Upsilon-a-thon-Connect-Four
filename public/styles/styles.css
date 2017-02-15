@@ -393,11 +393,13 @@ font-size:40px;
 
 
 
-
   #messageSend { background: #000; line-height: 70px; font-size:40px; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-  #messageSend input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+  #messageSend input { border: 0; padding: 10px; width: 70%; margin-right: .5%; }
   #messageSend button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-  #messages { height:92%; display:flex; flex-direction:column; justify-content:flex-end;    list-style-type: none; margin: 0; padding: 0; line-height: 70px; font-size:40px;}
+  #selectDiv,#selectDiv button{ overflow:hidden; display:inline; height: 70px; width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+  /*#chatMessages{overflow:auto; width: 100%; position:absolute; bottom:10%; max-height:90%;}*/
+  #messages { height:92%; overflow:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 70px; font-size:40px;}
+
   #messages li { padding: 5px 10px; display:block;}
   #messages li:nth-child(odd) { background: #eee; }
 

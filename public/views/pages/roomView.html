@@ -2,8 +2,16 @@
   <button ng-click="roomCtrl.backToInbox()" class="addButton fa fa-arrow-left"></button>
   <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
 </header>
+<div id="chatMessages">
 
-<ul id="messages"><li ng-repeat="message in roomCtrl.messages track by $index">{{message}}</li></ul>
+<ul id="messages"><li ng-repeat="message in roomCtrl.messages track by $index">{{message.sender}}: {{message.text}}<img ng-src="{{message.pic.location}}" /></li></ul>
+</div>
+
 <form id="messageSend" action="">
-  <input id="m" ng-model="roomCtrl.message" autocomplete="off" /><button ng-click="roomCtrl.send($event)">Send</button>
+  <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
+  <div id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+              <button >Select Picture</button>
+              <!-- <span> {{file.$ngfName}} </span> <img ngf-thumbnail="file || '/images/upload.svg'"> -->
+  </div>
+  <button  ng-click="roomCtrl.send($event,roomCtrl.message)">Send</button>
 </form>

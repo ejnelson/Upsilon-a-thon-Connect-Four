@@ -25,11 +25,11 @@ angular.module('myApp').service('roomViewService', function ($http,$location) {
     //   userWhoIsLoggedIn=username;
     //   console.log('user who is logged in: ',userWhoIsLoggedIn)
     // }
-    // this.returnUsername=function(){
-    //   return new Promise(function(resolve,reject){
-    //     resolve(userWhoIsLoggedIn);
-    //   });
-    // }
+    this.returnRoomId=function(){
+      return new Promise(function(resolve,reject){
+        resolve(roomId);
+      });
+    }
 
 
 
