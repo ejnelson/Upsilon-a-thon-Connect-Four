@@ -1,24 +1,21 @@
-angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload',
-  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload) {
+angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload','$document','$timeout',
+  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload,$document,$timeout) {
     console.log('Room controller loaded');
     var vm=this;
     var currentSocket=null;
 
-    function scrollToBottom(id){
-       var div = document.getElementById(id);
-       div.scrollTop = div.scrollHeight - div.clientHeight;
+    vm.photoView=function(){
+      $location.path('/photoView');
     }
-    var myDiv = document.getElementById("chatMessages");
-
-    myDiv.scrollTop = myDiv.scrollHeight;
-
+    //getting username for getting messages aligned right
+    usernameStoreService.returnUsername().then(function(user){
+      vm.roomUser=user;
+    })
 
     vm.getMessages=function(){
 
       roomViewService.findRoomData().then(function(res){
         vm.messages=res.messages;
-
-        scrollToBottom('chatMessages');
         console.log('this is the id of the room we want',res._id);
 
         let socket_connect = function (room) {
@@ -44,8 +41,8 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
         socket.on('chat message', function(oneMessage){
            vm.messages.push(oneMessage);
            console.log(vm.messages);
+           console.log(oneMessage);
            $scope.$apply();
-           scroll();
        });
        vm.backToInbox=function(){
          socket.emit('force disconnect')
@@ -74,10 +71,11 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                            text: msg}
                 }).then(function (resp) {
                     console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.config.data);
-
+                    vm.file=null;
                 }, function (resp) {
                     console.log('Error status: ' + resp.status);
                 }, function (evt) {
+                    vm.file=null;
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                 });
@@ -104,6 +102,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
 
         //  var data={message:vm.message};
         //  vm.messages.push(vm.message);
+
          vm.message='';
          console.log(vm.messages);
        }//end of send

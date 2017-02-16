@@ -1,9 +1,6 @@
-<header class="container-fluid" ng-init="roomCtrl.getPhotos()">
-  <button ng-click="roomCtrl.backToInbox()" class="addButton fa fa-arrow-left"></button>
-  <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
+<header class="container-fluid">
+  <button ng-click="photoCtrl.backToRoom()" class="addButton fa fa-arrow-left"></button>
+  <!-- <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button> -->
 </header>
-photoview
-<ul id="messages"><li ng-repeat="message in roomCtrl.messages track by $index">{{message}}</li></ul>
-<form id="messageSend" action="">
-  <input id="m" ng-model="roomCtrl.message" autocomplete="off" /><button ng-click="roomCtrl.send($event)">Send</button>
-</form>
+
+<ul id="photos"><li ng-repeat="message in photoCtrl.messages | orderBy: -message.date" ng-if="message.pic!=null"><img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>

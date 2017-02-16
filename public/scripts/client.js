@@ -1,4 +1,6 @@
-var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload']);
+var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives']);
+
+
 
 app.config(function($routeProvider,$locationProvider){
   $routeProvider.when('/',{
@@ -26,7 +28,7 @@ app.config(function($routeProvider,$locationProvider){
         }
   }).when('/photoView',{
     templateUrl:'views/pages/photoview.html',
-    controller:'RoomController as roomCtrl',
+    controller:'PhotoController as photoCtrl',
     resolve: {
       _: function ($location,$http) {
             $http.get('/loginStatus').then(function(res){

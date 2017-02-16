@@ -209,7 +209,7 @@ header{
 img{
   height:100%;
   display:block;
-  margin-left:auto;
+  /*margin-left:auto;*/
 }
 .roomPic{
   float:left;
@@ -397,11 +397,18 @@ font-size:40px;
   #messageSend input { border: 0; padding: 10px; width: 70%; margin-right: .5%; }
   #messageSend button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
   #selectDiv,#selectDiv button{ overflow:hidden; display:inline; height: 70px; width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-  /*#chatMessages{overflow:auto; width: 100%; position:absolute; bottom:10%; max-height:90%;}*/
-  #messages { height:92%; overflow:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 70px; font-size:40px;}
+  #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:10%; max-height:90%;}
+  #messages { height:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 70px; font-size:40px;}
 
   #messages li { padding: 5px 10px; display:block;}
   #messages li:nth-child(odd) { background: #eee; }
-
-
+.floatRight{text-align: right;}
+.floatRight img{margin-left:auto;}
   /*---------------------------END room view--------------------------*/
+
+  /*---------------------------photo view--------------------------*/
+
+
+
+
+    /*---------------------------END photo view--------------------------*/

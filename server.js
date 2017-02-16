@@ -19,7 +19,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 //routes
-var uploads = require('./routes/private/uploads');
+var getPhotos = require('./routes/private/getPhotos');
+// var uploads = require('./routes/private/uploads');
 var router = require('./routes/private/router');
 var newRoom = require('./routes/private/newRoom');
 var roomData = require('./routes/private/roomData');
@@ -58,8 +59,8 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-
-app.use('/uploads', uploads);
+app.use('/getPhotos', getPhotos);
+// app.use('/uploads', uploads);
 app.use('/router', router);
 app.use('/newRoom', newRoom);
 app.use('/roomData', roomData);
@@ -160,15 +161,15 @@ io.on('connection', function(socket){
 app.post('/', upload.single('file'), function(req, res) {
   console.log('here is the req.body',req.body);
 
-  var msgObject={
+  var msgObjectTwo={
     date: Date.now(),
-    file: req.file,
+    pic: req.file,
     text: req.body.text,
     roomId:req.body.roomId,
     sender:req.user.username
   };
-  io.to(req.body.roomId).emit('chat message', msgObject);
-
+  io.to(req.body.roomId).emit('chat message', msgObjectTwo);
+msgObjectTwo=null;
   Room.update(
     {_id:req.body.roomId},
     {$push:{messages:{

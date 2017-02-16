@@ -1,10 +1,10 @@
 <header class="container-fluid" ng-init="roomCtrl.getMessages()">
   <button ng-click="roomCtrl.backToInbox()" class="addButton fa fa-arrow-left"></button>
-  <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
+  <button ng-click="roomCtrl.photoView()" class="profileButton fa fa-picture-o"></button>
 </header>
-<div id="chatMessages">
+<div scroll-glue-bottom="glued" id="chatMessages">
 
-<ul id="messages"><li ng-repeat="message in roomCtrl.messages track by $index">{{message.sender}}: {{message.text}}<img ng-src="{{message.pic.location}}" /></li></ul>
+<ul id="messages" scroll-glue-bottom="glued" ><li ng-class="{floatRight: message.sender== roomCtrl.roomUser}" ng-repeat="message in roomCtrl.messages track by $index">{{message.sender}}: {{message.text}}<img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>
 </div>
 
 <form id="messageSend" action="">
@@ -13,5 +13,5 @@
               <button >Select Picture</button>
               <!-- <span> {{file.$ngfName}} </span> <img ngf-thumbnail="file || '/images/upload.svg'"> -->
   </div>
-  <button  ng-click="roomCtrl.send($event,roomCtrl.message)">Send</button>
+  <button ng-click="roomCtrl.send($event,roomCtrl.message)">Send</button>
 </form>

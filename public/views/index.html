@@ -8,6 +8,7 @@
     <script src="/vendors/angular-animate.min.js"></script>
     <script src="/vendors/ng-file-upload.min.js"></script>
     <script src="/vendors/ng-file-upload-shim.min.js"></script>
+    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
 
     <script src="https://use.fontawesome.com/b8f1be7d71.js"></script>
     <script src="/vendors/alertify.js"></script>
@@ -18,6 +19,7 @@
     <script src="/scripts/usernameStoreService.js"></script>
     <script src="/scripts/roomViewService.js"></script>
     <script src="/scripts/uploadService.js"></script>
+    <script src="/scripts/PhotoController.js"></script>
     <script src="/scripts/InboxController.js"></script>
     <script src="/scripts/RoomController.js"></script>
     <script src="/scripts/LoginController.js"></script>
@@ -29,19 +31,9 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <base href="/" >
   </head>
-  <body ng-app="myApp">
+  <body ng-app="myApp" >
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <ng-view></ng-view>
-    <!-- <script>
-  var socket = io.connect();
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script> -->
-   <!-- <script>
 
-  var socket = io();
-</script> -->
   </body>
 </html>
