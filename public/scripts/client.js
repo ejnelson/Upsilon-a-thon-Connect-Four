@@ -1,5 +1,15 @@
 var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives']);
 
+app.directive("repeatEnd", function(){
+          return {
+              restrict: "A",
+              link: function (scope, element, attrs) {
+                  if (scope.$last) {
+                      scope.$eval(attrs.repeatEnd);
+                  }
+              }
+          };
+      });
 
 
 app.config(function($routeProvider,$locationProvider){

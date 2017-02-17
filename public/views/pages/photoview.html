@@ -1,6 +1,17 @@
+<div ng-show="photoCtrl.picContainer" id="picContainer" ng-click="photoCtrl.picContainer=false">
+  <div id="picContainerPic">
+    <img  ng-src="{{photoCtrl.pic}}" src="{{photoCtrl.pic}}"/>
+  </div>
+</div>
+
+
 <header class="container-fluid">
   <button ng-click="photoCtrl.backToRoom()" class="addButton fa fa-arrow-left"></button>
   <!-- <button ng-click="roomCtrl.editProfile()" class="profileButton fa fa-user-circle"></button> -->
+  <span id="photoHeader">bulletin board</span>
 </header>
+<div class="spacer"></div>
 
-<ul id="photos"><li ng-repeat="message in photoCtrl.messages | orderBy: -message.date" ng-if="message.pic!=null"><img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>
+<div id="photosContainer" >
+<ul id="photos" ><li  ng-click="photoCtrl.imageZoom(message)" ng-repeat="message in photoCtrl.messages | orderBy: -message.date:true" ng-if="message.pic!=null"><img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>
+</div>

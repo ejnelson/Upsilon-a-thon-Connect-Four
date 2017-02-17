@@ -3,9 +3,10 @@ angular.module("myApp").controller("PhotoController", ['$location','$http','$sco
     console.log('photo controller loaded');
     var vm=this;
     vm.messages=[];
-    vm.backToRoom=function(){
-      $location.path('/roomView');
-    }
+
+
+
+
     roomViewService.findRoomData().then(function(res){
         console.log('this is the id of the room we want',res._id);
       $http({
@@ -20,7 +21,16 @@ angular.module("myApp").controller("PhotoController", ['$location','$http','$sco
 
     });
 
+    vm.backToRoom=function(){
+      $location.path('/roomView');
+    }
 
+    vm.imageZoom=function(message){
+      vm.pic=message.pic.location;
+      vm.picContainer=true;
+      console.log('this is the location',vm.pic);
+      $scope.apply;
+    }
 
 
   }

@@ -3,15 +3,21 @@
   <button ng-click="roomCtrl.photoView()" class="profileButton fa fa-picture-o"></button>
 </header>
 <div scroll-glue-bottom="glued" id="chatMessages">
-
-<ul id="messages" scroll-glue-bottom="glued" ><li ng-class="{floatRight: message.sender== roomCtrl.roomUser}" ng-repeat="message in roomCtrl.messages track by $index">{{message.sender}}: {{message.text}}<img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>
+  <ul id="messages" scroll-glue-bottom="glued" >
+    <li ng-class="{floatRight: message.sender== roomCtrl.roomUser}" ng-repeat="message in roomCtrl.messages track by $index" repeat-end="roomCtrl.onEnd()">
+      <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser">{{message.sender}}:</span>
+      <br ng-show="message.sender!= roomCtrl.roomUser"/>
+      <span id="messageMessage" ng-show="message.text!=''"class="messageText">{{message.text}}</span>
+      <img ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
+     </li>
+  </ul>
 </div>
 
-<form id="messageSend" action="">
+<form name="messageForm" id="messageSend" ng-submit="messageForm.$valid" action="">
   <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
-  <div id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
-              <button >Select Picture</button>
-              <!-- <span> {{file.$ngfName}} </span> <img ngf-thumbnail="file || '/images/upload.svg'"> -->
-  </div>
-  <button ng-click="roomCtrl.send($event,roomCtrl.message)">Send</button>
+  <button class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+              <!-- <button class="fa fa-file-image-o"></button> -->
+              <span id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file ">
+  </button>
+  <button type="submit" ng-submit="messageForm.$valid" class="fa fa-paper-plane" ng-click="roomCtrl.send($event,roomCtrl.message)"></button>
 </form>

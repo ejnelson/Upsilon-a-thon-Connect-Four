@@ -140,7 +140,7 @@ io.on('connection', function(socket){
       {$push:{messages:{
         text:msgObject.text,
         sender:msgObject.sender,
-        date:msgObject.date,
+        date:Date.now(),
         pic:msgObject.pic
       }}},
     function(err){

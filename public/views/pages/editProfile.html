@@ -3,7 +3,12 @@
   <p id="profileUsername">
     {{inboxCtrl.userProfile.username}}
   </p>
-
+  <div id="profilePic">
+    <div class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="inboxCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+                <!-- <button class="fa fa-file-image-o"></button> -->
+                <span id="fileName"> {{inboxCtrl.file.$ngfName}} </span> <img ng-show="inboxCtrl.file" id="fileThumb" ngf-thumbnail="inboxCtrl.file ">
+    </div>
+  </div>
   <div class="profileInputDiv" id="firstName">
     <label class="editProfileLabel">First Name:</label>
     <input class="profileInput"  placeholder="First Name" ng-model="inboxCtrl.editFirstName" ng-value="inboxCtrl.userProfile.firstName" />

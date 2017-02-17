@@ -3,6 +3,14 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
     console.log('Room controller loaded');
     var vm=this;
     var currentSocket=null;
+    var div=document.getElementById("chatMessages");
+
+    vm.onEnd = function(){
+                    $timeout(function(){
+                      div.scrollTop=div.scrollHeight;
+                        // alert('all done');
+                    }, 2);
+                };
 
     vm.photoView=function(){
       $location.path('/photoView');
@@ -16,6 +24,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
 
       roomViewService.findRoomData().then(function(res){
         vm.messages=res.messages;
+        vm.onEnd();
         console.log('this is the id of the room we want',res._id);
 
         let socket_connect = function (room) {
@@ -43,6 +52,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
            console.log(vm.messages);
            console.log(oneMessage);
            $scope.$apply();
+           vm.onEnd();
        });
        vm.backToInbox=function(){
          socket.emit('force disconnect')
@@ -66,7 +76,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                     url: '/',
                     data: {file: file,
                            roomId:roomIdRes,
-                           date:new Date(),
+                          //  date:new Date(),
                            sender: userRes,
                            text: msg}
                 }).then(function (resp) {
@@ -106,6 +116,9 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
          vm.message='';
          console.log(vm.messages);
        }//end of send
+     }).then(function(){
+       div.scrollTop=9999999999;
+      //  console.log('fired scroll stuff', div.scrollTop, div.scrollHeight );
      });//end of then promise
    }// end of getmessages function
 
