@@ -27,6 +27,21 @@ router.get('/getContactsData', function (req, res) {
   });
 });
 
+
+router.get('/getRoomPics', function (req, res) {
+  console.log('getting contacts Data from db',req.query.roomUsers);
+  var query=JSON.parse(req.query.roomUsers);
+  // console.log(Array.isArray(query));//used to find out that the original req.query needed a JSON.parse
+  User.find({username:{$in:query}}, function (err, roomUsersArray) {
+    if(err){
+      console.log('error finding contacts Data',err);
+      return;
+    }else{
+      console.log('what is in roomUsersArray',roomUsersArray+' '+roomUsersArray.length);
+      res.send(roomUsersArray);
+    }
+  });
+});
 //
 // router.post('/', function (req, res) {
 //   console.log('Req body', req.body);

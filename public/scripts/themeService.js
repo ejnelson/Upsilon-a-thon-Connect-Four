@@ -47,6 +47,8 @@ angular.module('myApp').service('themeService', function ($http,$location) {
           "#messageSend{background-color:"+main+";}"+
           ".loginMain{background-color:"+main+";}"+
           "#roomPicPlaceholder{color:"+main+";}"+
+          "#senderProfileText{background-color:"+main+";}"+
+
 
           "#loginSubmit{background-color:"+dark+"}"+
           "#regSubmit{background-color:"+dark+";}"+

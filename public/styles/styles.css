@@ -150,6 +150,7 @@ margin:10px;
   font-size:60px;
   color:white;
   float:right;
+
 }
 
 .profilePicButton{
@@ -174,8 +175,10 @@ margin:4px;
 }
 #roomPicPlaceholder{
   color: rgb(31, 0, 119);
-  font-size:4em;
+  font-size:3em;
   margin:none;
+  margin-top:20px;
+
 }
 header{
   background-color: rgb(31, 0, 119);
@@ -237,18 +240,20 @@ img{
 }
 .roomPic{
   float:left;
-  height:80;
-  width:80;
+  height:70px;
+
+  width:70px;
   margin:5px;
   margin-top:15px;
   margin-left:-5px;
-  border-radius:50%;
+  /*border-radius:50%;*/
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
   overflow:hidden;
+
 
 }
 .clearfix::after{
@@ -434,8 +439,8 @@ padding-top:5px;
   color:white;
 
 }
-#profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; height:150px; width:100%; text-align: center;  }
-#profilePicSelect img{height:150px;width:auto;margin: 0 auto;}
+#profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; height:100px; width:100%; text-align: center;  }
+#profilePicSelect img{height:100px;width:auto;margin: 0 auto;}
 .fileGreen{color:green;}
 #
 /*---------------------------END edit profile--------------------------*/
@@ -480,14 +485,59 @@ font-family:"Helvetica",sans-serif;
   /*#selectDiv button{height:100%; width:100%; display:inline; width:9%; border:none;}*/
   #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:85px;background-color: #eee}
   #messages { height:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 20px; font-size:18px;}
-  #messages img{height:150px;border-radius:10px;margin-left:40px;border-radius:30px;}
+  .messagesPicture{height:200px;margin-left:50px;border-radius:30px;}
+
   #messages li { padding: 5px 0px; display:block;background-color: #eee;height:auto;}
   #messageSender{ padding:none; background-color:transparent;font-family:"leagueSpartan",serif;}
-  #messageMessage{margin-left:40px; display:inline-block;border-radius:10px;}
+  #messageMessage{margin-left:0px; display:inline-block;border-radius:10px;}
   .messageText{padding:10px;background-color:white;}
   /*#messages li:nth-child(odd) { background: #eee; }*/
-  .floatRight{text-align: right; margin-right:10px;}
+  .floatRight{text-align: right; margin-right:10px; }
   .floatRight img{margin-left:auto !important;margin-right:10px;}
+  .floatRight span{background-color:#ccc !important;}
+  #messageSenderPic{
+    margin-left:10px;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+  }
+  #senderProfileContainer{
+  height:100%;
+  width:100%;
+  position:fixed;
+  z-index:5;
+  left:0px;
+  }
+  #senderPic{
+    
+  height:auto;
+  width:250px;
+  margin-bottom:10px;
+  border-radius: 30px;
+  }
+  #senderProfileText{
+    padding:10px;
+    margin-top:200px;
+    font-size:16px;
+    background-color: #1f0077;
+    color:white;
+    font-weight: 200;
+    width:275px;
+    padding-left:15px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+  #senderProfileContainer.ng-hide {
+    /*top:-100%;*/
+    /*opacity:0;*/
+    left:-100%;
+  }
+
+
+  #senderProfileContainer.ng-hide-add,
+  #senderProfileContainer.ng-hide-remove{
+    transition: all ease 0.5s;
+  }
   /*---------------------------END room view--------------------------*/
 
   /*---------------------------photo view--------------------------*/

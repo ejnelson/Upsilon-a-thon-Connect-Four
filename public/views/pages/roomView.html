@@ -5,11 +5,11 @@
 <div scroll-glue-bottom="glued" id="chatMessages">
   <ul id="messages" scroll-glue-bottom="glued" >
     <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages track by $index" repeat-end="roomCtrl.onEnd()">
-      <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username">{{message.sender}}:</span>
-      <!-- <img id="messageSenderPic" ng-show="message.pic" src="{{roomCtrl.roomUser.imgUrl}}" ng-src="{{roomCtrl.roomUser.imgUrl}}" /> -->
-      <br ng-show="message.sender!= roomCtrl.roomUser.username"/>
-      <span id="messageMessage" ng-show="message.text!=''"class="messageText">{{message.text}}</span>
-      <img ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
+      <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username && !message.userPic ">{{message.sender}}: </span>
+      <img id="messageSenderPic" ng-click="roomCtrl.profileInfo(message.sender)" class="fa fa-user-circle" ng-show="message.userPic && message.sender!= roomCtrl.roomUser.username" src="{{message.userPic}}" ng-src="{{message.userPic}}" />
+      <!-- <br ng-show="message.sender!= roomCtrl.roomUser.username"/> -->
+      <span id="messageMessage"  ng-show="message.text!='' &&message.text!=undefined&&message.text!=null"class="messageText">{{message.text}}</span>
+      <img class="messagesPicture" ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
      </li>
   </ul>
 </div>
@@ -22,3 +22,14 @@
   </button>
   <button type="submit" ng-submit="messageForm.$valid" class="fa fa-paper-plane" ng-click="roomCtrl.send($event,roomCtrl.message)"></button>
 </form>
+
+<div id="senderProfileContainer" ng-click="roomCtrl.hideSenderStuff()" ng-show="roomCtrl.show">
+  <div id="senderProfileText">
+    <img id="senderPic" src="{{roomCtrl.senderPic}}" ng-src="{{roomCtrl.senderPic}}"/>
+
+    <p class="senderStuff" id="senderUsername">Username: {{roomCtrl.senderUsername}}</p>
+    <p class="senderStuff" id="senderName">Name: {{roomCtrl.senderFirstName}} {{roomCtrl.senderLastName}}</p>
+    <p class="senderStuff" id="senderEmail">Email: {{roomCtrl.senderEmail}}</p>
+    <p class="senderStuff" id="senderBio">Bio: {{roomCtrl.senderBio}}</p>
+  </div>
+</div>

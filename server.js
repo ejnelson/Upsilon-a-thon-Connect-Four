@@ -19,6 +19,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 //routes
+var getSenderInfo = require('./routes/private/getSenderInfo');
 var profilePic = require('./routes/private/profilePic');
 var getPhotos = require('./routes/private/getPhotos');
 var uploads = require('./routes/private/uploads');
@@ -61,6 +62,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.use('/getSenderInfo', getSenderInfo);
 app.use('/profilePic', profilePic);
 app.use('/getPhotos', getPhotos);
 app.use('/uploads', uploads);
