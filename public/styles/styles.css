@@ -46,13 +46,13 @@ height:100%;
 #loginCenter{
   position:fixed;
 
-  top:50%;
+  bottom:50%;
   left:12.5%;
 
   width:75%;
   background-color: transparent;
   /*margin-left:-100px;*/
-  margin-top:-60%;
+  margin-bottom:-60%;
   text-align: center;
 
 }
@@ -479,8 +479,9 @@ font-family:"Helvetica",sans-serif;
 }
 
   #messageSend { background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
-  #messageSend input { border: 0; padding: 5px; width: 74%; margin:5px; border-radius:25px;}
+  #messageSend input { border: 0; padding: 5px; width: 65%; margin:5px; border-radius:25px;}
   #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
+ #gifButton{ background-image:url("/images/gificon.png"); background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
   #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 19%; color:white; padding: 10px; }
   /*#selectDiv button{height:100%; width:100%; display:inline; width:9%; border:none;}*/
   #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:85px;background-color: #eee}
@@ -509,7 +510,7 @@ font-family:"Helvetica",sans-serif;
   left:0px;
   }
   #senderPic{
-    
+
   height:auto;
   width:250px;
   margin-bottom:10px;

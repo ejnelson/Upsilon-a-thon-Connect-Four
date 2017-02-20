@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "postinstall": "grunt"
+    "start": "node server.js"
+
   },
   "author": "",
   "license": "ISC",

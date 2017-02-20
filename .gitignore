@@ -3,3 +3,4 @@ node_modules
 public/vendors
 public/scripts/client.min.js
 .env
+gruntfile.js

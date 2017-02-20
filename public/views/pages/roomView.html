@@ -16,6 +16,7 @@
 
 <form name="messageForm" id="messageSend" ng-submit="messageForm.$valid" action="">
   <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
+  <button id="gifButton"ng-click="roomCtrl.searchForGif()"></button>
   <button class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
               <!-- <button class="fa fa-file-image-o"></button> -->
               <span ng-show="roomCtrl.file" id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file ">
