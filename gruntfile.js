@@ -2,8 +2,8 @@ var sources = [ "public/scripts/*.js", "!public/scripts/client.min.js" ];
 
 module.exports = function(grunt) {
   grunt.initConfig({
-    uglify: { dist: { src: sources, dest: "public/scripts/client.min.js" } },
-    clean: [ "public/scripts/client.min.js", "public/vendors/*" ],
+    // uglify: { dist: { src: sources, dest: "public/scripts/client.min.js" } },
+    // clean: [ "public/scripts/client.min.js", "public/vendors/*" ],
     watch: { files: sources, tasks: [ "default" ] },
     copy: {
       files: {

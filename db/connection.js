@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 exports.connect = function () {
-  mongoose.connect('mongodb://localhost/primeproject');//need to change to be able to host on heroku
+    mongoose.connect(process.env.MONGODB_URI);
 
   mongoose.connection.on('error', function(error){
     console.log('error connecting', error);
