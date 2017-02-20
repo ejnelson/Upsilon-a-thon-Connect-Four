@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
 router.get('/getContactsData', function (req, res) {
   console.log('getting contacts Data from db',req.query.contacts);
   var query=JSON.parse(req.query.contacts);
-  console.log(Array.isArray(query));
+  // console.log(Array.isArray(query));//used to find out that the original req.query needed a JSON.parse
   User.find({username:{$in:query}}, function (err, contactsArray) {
     if(err){
       console.log('error finding contacts Data',err);

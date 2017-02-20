@@ -1,4 +1,4 @@
-<div class="loginMain">
+<div class="loginMain" ng-swipe-right="loginCtrl.swipe()">
   <div id="loginCenter">
 
 
@@ -9,7 +9,7 @@
       <div><input  ng-model="loginCtrl.password" placeholder="password" type="password" id="password" /></div>
       <button type="submit" ng-click="loginCtrl.login()" id="loginSubmit" >Log in</button>
     </form>
-    <p id="forgot">Forgot your Password?</p>
+    <p id="forgot"><button ng-click="loginCtrl.forgot()" id="forgot">Forgot your Password?</button></p>
   </div>
   <div id="loginFooter">
 

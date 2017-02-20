@@ -19,8 +19,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 //routes
+var profilePic = require('./routes/private/profilePic');
 var getPhotos = require('./routes/private/getPhotos');
-// var uploads = require('./routes/private/uploads');
+var uploads = require('./routes/private/uploads');
 var router = require('./routes/private/router');
 var newRoom = require('./routes/private/newRoom');
 var roomData = require('./routes/private/roomData');
@@ -29,6 +30,7 @@ var getProfileInfo = require('./routes/private/getProfileInfo');
 var login = require('./routes/login');
 var register = require('./routes/register');
 // var pg = require("pg");
+var User= require('./models/user');
 var Room = require('./models/room');
 var fs = require('fs');
 var multer = require('multer');
@@ -59,8 +61,9 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.use('/profilePic', profilePic);
 app.use('/getPhotos', getPhotos);
-// app.use('/uploads', uploads);
+app.use('/uploads', uploads);
 app.use('/router', router);
 app.use('/newRoom', newRoom);
 app.use('/roomData', roomData);
@@ -188,6 +191,29 @@ msgObjectTwo=null;
       }
     });
 });
+
+//
+// app.post('/newProfile', upload.single('file'), function(req, res) {//to upload profile pics
+//   console.log('here is the req.body',req.body);
+//   var id = req.user.id;
+//
+//   User.update(
+//     {_id:id},
+//     {firstName:req.body.firstName,
+//     lastName:req.body.lastName,
+//     email:req.body.email,
+//     bio:req.body.bio,
+//     imgUrl:req.file.location;
+//     },
+//   function(err){
+//     if (err) {
+//       res.sendStatus(500);
+//       return;
+//     }
+//
+//     res.sendStatus(204);
+//   });
+// });
 
 //gets all the uploads recorded in the database
 app.get('/messages', function (req, res) {

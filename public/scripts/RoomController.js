@@ -1,5 +1,5 @@
-angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload','$document','$timeout',
-  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload,$document,$timeout) {
+angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload','$document','$timeout','editProfileService',
+  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload,$document,$timeout,editProfileService) {
     console.log('Room controller loaded');
     var vm=this;
     var currentSocket=null;
@@ -16,14 +16,23 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
       $location.path('/photoView');
     }
     //getting username for getting messages aligned right
-    usernameStoreService.returnUsername().then(function(user){
-      vm.roomUser=user;
-    })
+
+    editProfileService.getProfile().then(function(user){
+
+      vm.roomUser=user.data[0];
+      console.log('this is the room user',vm.roomUser);
+    });
+
+
 
     vm.getMessages=function(){
 
       roomViewService.findRoomData().then(function(res){
+        console.log('users in room',res.users)
         vm.messages=res.messages;
+        vm.usernamesInRoom=res.usernames;
+
+        
         vm.onEnd();
         console.log('this is the id of the room we want',res._id);
 

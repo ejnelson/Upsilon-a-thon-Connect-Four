@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="manifest" href="../manifest.json">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' >
+    <meta name="mobile-web-app-capable" content="yes">
     <meta charset="utf-8">
-    <title>Bulletin</title>
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>bulletin</title>
     <script src="/vendors/angular.min.js"></script>
     <script src="/vendors/angular-route.min.js"></script>
     <script src="/vendors/angular-animate.min.js"></script>
@@ -12,6 +16,7 @@
 
     <script src="https://use.fontawesome.com/b8f1be7d71.js"></script>
     <script src="/vendors/alertify.js"></script>
+    <script src="/vendors/angular-touch.min.js"></script>
     <script src="/scripts/client.js"></script>
     <script src="/scripts/addContactService.js"></script>
     <script src="/scripts/editProfileService.js"></script>
@@ -29,6 +34,7 @@
     <link rel="stylesheet" href="/styles/alertify.css">
     <link rel="stylesheet" href="/styles/default.css">
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/scripts/themeService.js"></script>
     <base href="/" >
   </head>
   <body ng-app="myApp" >

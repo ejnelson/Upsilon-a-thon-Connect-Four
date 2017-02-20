@@ -5,12 +5,12 @@
 
 <header class="container-fluid" ng-init="inboxCtrl.findRooms()">
   <button ng-click="addContainer=true" class="addButton fa fa-plus"></button>
-  <button ng-click="inboxCtrl.editProfile()" class="profileButton fa fa-user-circle"></button>
+  <button ng-click="inboxCtrl.editProfile()" ng-class="{'fa fa-user-circle':inboxCtrl.profilePic==null}" class="profilePicButton" style="background-image:url({{inboxCtrl.profilePic}})"></button>
 </header>
 <div class="spacer">
 
 </div>
-<div ng-repeat="room in inboxCtrl.convoList" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
+<div ng-swipe-right="inboxCtrl.goToPhotoView(room._id)" ng-swipe-left="inboxCtrl.goToRoomView(room._id)" ng-repeat="room in inboxCtrl.convoList" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
   <div class="roomPic" style="background-image: url({{room.imgUrl}})">
     <!-- <img ng-src="{{convo.imgUrl}}" /> --><span id="roomPicPlaceholder" class="profileButton fa fa-user-circle"></span>
   </div>

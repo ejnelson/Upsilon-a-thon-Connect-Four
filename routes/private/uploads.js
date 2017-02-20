@@ -1,34 +1,35 @@
-// var express = require('express');
-// var router = express.Router();
-// var fs = require('fs');
-// var Upload = require('../../models/upload');
-// var Room = require('../../models/room');
-// var multer = require('multer');
-//
-// var multerS3 = require('multer-s3');
-// var aws = require('aws-sdk');
-// var s3 = new aws.S3();
-//
-// var express = require('express');
-// var app=express();
+var express = require('express');
+var router = express.Router();
+var fs = require('fs');
+var Upload = require('../../models/upload');
+var Room = require('../../models/room');
+var User = require('../../models/user');
+var multer = require('multer');
+
+var multerS3 = require('multer-s3');
+var aws = require('aws-sdk');
+var s3 = new aws.S3();
+
+var express = require('express');
+var app=express();
 // var http = require('http').Server(app);
-// // var server = require('http').Server(app);
+// var server = require('http').Server(app);
 // var io = require('socket.io')(http);
 //
-// var upload = multer({
-//   storage: multerS3({
-//     s3: s3,
-//     bucket: process.env.S3_BUCKET_NAME,//alternately, if you are not using a .env file you can just use a string for the name of your bucket here, 'your-bucket-name'
-//     acl: 'public-read',//default is private, set to public-read is so the public can view your pictures
-//     metadata: function (req, file, cb) {
-//       cb(null, {fieldName: file.fieldname});
-//     },
-//     key: function (req, file, cb) {
-//       cb(null, Date.now().toString())
-//     }
-//   })
-//
-// });
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.S3_BUCKET_NAME,//alternately, if you are not using a .env file you can just use a string for the name of your bucket here, 'your-bucket-name'
+    acl: 'public-read',//default is private, set to public-read is so the public can view your pictures
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString())
+    }
+  })
+
+});
 // io.on('connection', function(socket){
 //
 //   var room = socket.handshake['query']['r_var'];
@@ -86,8 +87,50 @@
 //     });
 //    });
 //
-//
-//
-//
-//
-// module.exports = router;
+router.post('/', upload.single('file'), function(req, res) {//to upload profile pics
+  console.log('here is the req.body',req.body);
+  var id = req.user.id;
+
+  User.update(
+    {_id:id},
+    {firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    email:req.body.email,
+    bio:req.body.bio,
+    theme:req.body.theme,
+    imgUrl:req.file.location
+    },
+  function(err){
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    res.sendStatus(204);
+  });
+});
+
+router.put('/', function(req, res) {//to upload profile pics
+  console.log('here is the req.body',req.body);
+  var id = req.user.id;
+
+  User.update(
+    {_id:id},
+    {firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    email:req.body.email,
+    bio:req.body.bio,
+    theme:req.body.theme
+
+    },
+  function(err){
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    res.sendStatus(204);
+  });
+});
+
+module.exports = router;

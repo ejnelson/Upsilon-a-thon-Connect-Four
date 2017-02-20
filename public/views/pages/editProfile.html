@@ -4,10 +4,12 @@
     {{inboxCtrl.userProfile.username}}
   </p>
   <div id="profilePic">
-    <div class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="inboxCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
-                <!-- <button class="fa fa-file-image-o"></button> -->
-                <span id="fileName"> {{inboxCtrl.file.$ngfName}} </span> <img ng-show="inboxCtrl.file" id="fileThumb" ngf-thumbnail="inboxCtrl.file ">
-    </div>
+
+    <button  ng-class="{'fa fa-file-image-o':inboxCtrl.pic==null,fileGreen:inboxCtrl.file!=null}" id="profilePicSelect" ngf-select ng-model="inboxCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+                <img ng-show="inboxCtrl.pic" ng-src="{{inboxCtrl.pic}}" src="{{inboxCtrl.pic}}" />
+                <!-- <span ng-show="!inboxCtrl.pic" id="fileName"> {{inboxCtrl.file.$ngfName}} </span>  -->
+                <!-- <img ng-show="!inboxCtrl.pic" id="fileThumb" ngf-thumbnail="inboxCtrl.file "> -->
+    </button>
   </div>
   <div class="profileInputDiv" id="firstName">
     <label class="editProfileLabel">First Name:</label>
@@ -17,14 +19,28 @@
     <label class="editProfileLabel">Last Name:</label>
     <input class="profileInput"  placeholder="Last Name" ng-model="inboxCtrl.editLastName" ng-value="inboxCtrl.userProfile.lastName" />
   </div>
+  <div class="profileInputDiv" id="lastName">
+    <label class="editProfileLabel">Theme</label>
+    <select class="profileInput"  placeholder="Theme" ng-model="inboxCtrl.editTheme" ng-value="inboxCtrl.userProfile.theme" >
+      <option>Default</option>
+      <option>Go</option>
+      <option>Blood</option>
+      <option>Darkness</option>
+      <option>50 shades</option>
+      <option>Dabadee-Dabadie</option>
+
+    </select>
+  </div>
   <div class="profileInputDiv"  id="email">
     <label class="editProfileLabel">Email:</label>
     <input class="profileInput" placeholder="Email" ng-model="inboxCtrl.editEmail" ng-value="inboxCtrl.userProfile.email" />
   </div>
   <div class="profileInputDiv" id="bio">
     <label class="editProfileLabel">Bio:</label>
-    <textarea rows="5" class="profileInput" ng-model="inboxCtrl.editBio" placeholder="Bio" ng-value="inboxCtrl.userProfile.bio" ></textarea>
+    <textarea rows="3" class="profileInput" ng-model="inboxCtrl.editBio" placeholder="Bio" ng-value="inboxCtrl.userProfile.bio" ></textarea>
   </div>
   <button  class="profileEditButton" ng-click="inboxCtrl.submitNewProfile()" type="submit">Submit</button><br />
-  <button id="cancelNewProfile" class="profileEditButton" ng-click="inboxCtrl.cancelNewProfile()" type="submit">Cancel</button>
+  <button id="cancelNewProfile" class="profileEditButton" ng-click="inboxCtrl.cancelNewProfile()" type="submit">Cancel</button><br />
+  <button id="logOutProfile" class="profileEditButton" ng-click="inboxCtrl.logOutProfile()" type="submit">Log Out</button>
+
 </div>

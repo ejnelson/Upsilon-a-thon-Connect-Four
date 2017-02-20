@@ -1,6 +1,6 @@
 angular.module("myApp").controller("LoginController", [
-  '$location','$http','usernameStoreService',
-  function($location,$http,usernameStoreService) {
+  '$location','$http','usernameStoreService','themeService',
+  function($location,$http,usernameStoreService,themeService) {
     console.log('login controller loaded')
     var vm=this;
 
@@ -25,6 +25,10 @@ angular.module("myApp").controller("LoginController", [
       });
     };
 
+
+    vm.forgot=function(){
+      alertify.alert('TOO BAD');
+    }
 
 
   }

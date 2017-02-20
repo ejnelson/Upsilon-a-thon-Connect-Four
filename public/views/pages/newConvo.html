@@ -1,7 +1,7 @@
 <header ng-init="inboxCtrl.initAddConvo()" id="convoHeader" class="container-fluid">
   <a href="/inbox" id="newConvoBack" class="backButton fa fa-arrow-left">&nbsp;</a>
   <ul id="usersToAddToRoom">
-    <li ng-repeat="contactToAdd in inboxCtrl.contactsToAddList">{{contactToAdd.username}},</li>
+    <li ng-repeat="contactToAdd in inboxCtrl.contactsToAddList">{{contactToAdd.username}} </li>
   </ul>
   <div ng-click="inboxCtrl.createNewRoom()" id="newRoomButton"></div>
 </header>

@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   bio: String,
   inRooms: Array,
+  theme: { type: String, default: 'default' },
   contacts: Array
 });
 

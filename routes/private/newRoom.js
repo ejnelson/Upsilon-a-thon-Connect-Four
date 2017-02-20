@@ -5,7 +5,7 @@ var Room = require('../../models/room');
 router.get('/', function (req, res) {
   console.log(req.user.id);
   Room.find({users:{$in:[req.user.id]}}, function (err, foundRoom) {
-      console.log('what is in foundRoom',foundRoom);
+      // console.log('what is in foundRoom',foundRoom);
     if (err) {
       res.sendStatus(500);
     }else{

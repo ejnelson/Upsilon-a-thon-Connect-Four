@@ -15,6 +15,7 @@
     "angular": "^1.6.1",
     "angular-animate": "^1.6.1",
     "angular-route": "^1.6.1",
+    "angular-touch": "^1.6.2",
     "angularjs-scroll-glue": "^2.2.0",
     "aws-sdk": "^2.13.0",
     "bcrypt": "^1.0.2",

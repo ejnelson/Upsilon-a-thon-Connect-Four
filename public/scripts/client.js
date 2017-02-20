@@ -1,4 +1,5 @@
-var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives']);
+var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives','ngTouch']);
+
 
 app.directive("repeatEnd", function(){
           return {
@@ -57,7 +58,11 @@ app.config(function($routeProvider,$locationProvider){
         }
   }).when('/register',{
     templateUrl:'views/pages/register.html',
-    controller:'RegisterController as regCtrl',
+    controller:'RegisterController as regCtrl'
+
+  }).when('/newContact',{
+    templateUrl:'views/pages/newContact.html',
+    controller:'InboxController as inboxCtrl',
     resolve: {
       _: function ($location,$http) {
             $http.get('/loginStatus').then(function(res){
@@ -74,15 +79,44 @@ app.config(function($routeProvider,$locationProvider){
             })
           }
         }
-  }).when('/newContact',{
-    templateUrl:'views/pages/newContact.html',
-    controller:'InboxController as inboxCtrl'
   }).when('/newConvo',{
     templateUrl:'views/pages/newConvo.html',
-    controller:'InboxController as inboxCtrl'
+    controller:'InboxController as inboxCtrl',
+    resolve: {
+      _: function ($location,$http) {
+            $http.get('/loginStatus').then(function(res){
+              console.log('res.data, logged in =',res.data);
+              if(res.data){
+                console.log('user is logged in');
+                return;
+              }else {
+                console.log('user is not logged in');
+                //send them to the login view
+                // return false;
+                return $location.path('/');
+              }
+            })
+          }
+        }
   }).when('/editProfile',{
     templateUrl:'views/pages/editProfile.html',
-    controller:'InboxController as inboxCtrl'
+    controller:'InboxController as inboxCtrl',
+    resolve: {
+      _: function ($location,$http) {
+            $http.get('/loginStatus').then(function(res){
+              console.log('res.data, logged in =',res.data);
+              if(res.data){
+                console.log('user is logged in');
+                return;
+              }else {
+                console.log('user is not logged in');
+                //send them to the login view
+                // return false;
+                return $location.path('/');
+              }
+            })
+          }
+        }
   }).when('/roomView',{
     templateUrl:'views/pages/roomView.html',
     controller:'RoomController as roomCtrl',

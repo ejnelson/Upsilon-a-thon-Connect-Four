@@ -25,19 +25,19 @@ angular.module('myApp').service('editProfileService', function ($http,$location)
       this.getProfile=function(){
         return $http.get('/getProfileInfo').then(function(res){
               return res;
-              console.log(vm.userprofile);
           }).catch(function(err){
             console.log("error getting people",err);
           });
 
       };
 
-      this.updateProfile=function (first,last,email,bio){
+      this.updateProfile=function (first,last,email,bio,theme){
           var data={
             firstName:first,
             lastName:last,
             email:email,
-            bio:bio
+            bio:bio,
+            theme:theme
           }
         return $http.put('/getProfileInfo',data).then(function(res){
           console.log('return from user check',res);
