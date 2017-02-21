@@ -1,7 +1,7 @@
 angular.module('myApp').service('giphyService', function ($http,$location) {
 
       console.log('giphy service loaded');
-      var api='http://api.giphy.com/v1/gifs';
+      var api='https://api.giphy.com/v1/gifs';
 
       this.searchingForGif=function(search){
       // vm.searchGifFunction=function(){
@@ -11,7 +11,8 @@ angular.module('myApp').service('giphyService', function ($http,$location) {
           type:'GET',
           params:{
                   api_key:'dc6zaTOxFJmzC',
-                  q: search
+                  q: search,
+                  limit:10
                 }
         }).then(function(res){
             console.log(res.data.data);

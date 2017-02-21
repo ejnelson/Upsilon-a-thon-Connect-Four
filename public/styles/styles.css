@@ -46,7 +46,7 @@ height:100%;
 #loginCenter{
   position:fixed;
 
-  bottom:50%;
+  bottom:55%;
   left:12.5%;
 
   width:75%;
@@ -140,14 +140,14 @@ font-size:20px;
   background-color: transparent;
   border:none;
   margin:10px;
-  font-size:60px;
+  font-size:4.28em;
   color:white;
 }
 .profileButton{
   background-color: transparent;
   border:none;
 margin:10px;
-  font-size:60px;
+  font-size:4.28em;
   color:white;
   float:right;
 
@@ -188,7 +188,7 @@ header{
   width:100%;
   position:fixed;
   z-index:2;
-
+  max-height:6.072em;
 }
 #addContainer{
   height:100%;
@@ -562,9 +562,12 @@ font-family:"Helvetica",sans-serif;
   background-color:rgba(68, 68, 68, 0.75);
 
 }
-#gifSearchInput{ z-index:5;border: 0; padding: 5px; width: 50%; margin:5px; margin-left:20%; margin-bottom:10px; border-radius:25px;}
+
+#gifSearchForm{text-align: center;}
+#gifSearchInput{ z-index:5;border: 0; padding: 5px; width: 50%; margin:5px;  margin-bottom:10px; border-radius:25px;}
 #gifButton{;background-color:transparent;  width:auto;color:white; height: 100%; border: 2px solid white; border-radius:20px;padding: 10px; }
 #gifButtonSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
+#cancelGifSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
 
 
   #gifSearchContainer.ng-hide {

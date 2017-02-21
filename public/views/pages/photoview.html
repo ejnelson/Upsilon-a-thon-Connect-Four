@@ -13,5 +13,10 @@
 <div class="spacer"></div>
 
 <div id="photosContainer" >
-<ul id="photos" ><li  ng-click="photoCtrl.imageZoom(message)" ng-repeat="message in photoCtrl.messages | orderBy: -message.date:true" ng-if="message.pic!=null"><img src="{{message.pic.location}}" ng-src="{{message.pic.location}}" /></li></ul>
+<ul id="photos" >
+  <li  ng-repeat="message in photoCtrl.messages | orderBy: -message.date:true" ng-if="message.pic!=null||message.gif!=null">
+    <img ng-click="photoCtrl.imageZoom(message.pic.location)" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" ng-if="message.pic!=null"/>
+    <img ng-click="photoCtrl.imageZoom(message.gif)" src="{{message.gif}}" ng-src="{{message.gif}}" ng-if="message.gif!=null"/>
+  </li>
+</ul>
 </div>

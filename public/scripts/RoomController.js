@@ -42,7 +42,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                 // console.log('user',resp[userIndex]);
                 if(resp[userIndex]){
                   message.userPic=resp[userIndex].imgUrl;
-                  console.log('userPic',message.userPic);
+                  // console.log('userPic',message.userPic);
                   $scope.apply;
                 }
               });

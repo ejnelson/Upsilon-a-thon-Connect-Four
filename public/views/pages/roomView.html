@@ -48,6 +48,7 @@
       </li>
     </ul>
     <form name="gifSearchForm" id="gifSearchForm" ng-submit="gifSearchForm.$valid" action="">
+      <button id="cancelGifSearch" ng-click="roomCtrl.gifShow=false">cancel</button>
       <input id="gifSearchInput" ng-model="roomCtrl.gifSearchInput" autocomplete="off" />
       <button id="gifButtonSearch" ng-click="roomCtrl.searchForGif($event)" value="search">search</button>
     </form>

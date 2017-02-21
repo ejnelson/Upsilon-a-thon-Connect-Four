@@ -25,8 +25,8 @@ angular.module("myApp").controller("PhotoController", ['$location','$http','$sco
       $location.path('/roomView');
     }
 
-    vm.imageZoom=function(message){
-      vm.pic=message.pic.location;
+    vm.imageZoom=function(pic){
+      vm.pic=pic;
       vm.picContainer=true;
       console.log('this is the location',vm.pic);
       $scope.apply;
