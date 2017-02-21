@@ -13,6 +13,7 @@
       <!-- <br ng-show="message.sender!= roomCtrl.roomUser.username"/> -->
       <span id="messageMessage"  ng-show="message.text!='' &&message.text!=undefined&&message.text!=null"class="messageText">{{message.text}}</span>
       <img class="messagesPicture" ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
+      <img class="messagesPicture" ng-show="message.gif" src="{{message.gif}}" ng-src="{{message.gif}}" />
      </li>
   </ul>
 </div>
@@ -42,7 +43,7 @@
   <div id="gifSearch">
     <ul>
       <li class="gifItem" ng-repeat="gif in roomCtrl.gifList">
-        <img src="{{gif.images.original.url}}" ng-src="{{gif.images.original.url}}" />
+        <img ng-click="roomCtrl.addGif(gif.images.original.url)" src="{{gif.images.original.url}}" ng-src="{{gif.images.original.url}}" />
 
       </li>
     </ul>

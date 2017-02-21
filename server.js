@@ -146,7 +146,8 @@ io.on('connection', function(socket){
         text:msgObject.text,
         sender:msgObject.sender,
         date:Date.now(),
-        pic:msgObject.pic
+        pic:msgObject.pic,
+        gif:msgObject.gif
       }}},
     function(err){
       if (err) {
@@ -171,7 +172,8 @@ app.post('/', upload.single('file'), function(req, res) {
     pic: req.file,
     text: req.body.text,
     roomId:req.body.roomId,
-    sender:req.user.username
+    sender:req.user.username,
+    gif:req.body.gif
   };
   io.to(req.body.roomId).emit('chat message', msgObjectTwo);
 msgObjectTwo=null;
@@ -181,7 +183,8 @@ msgObjectTwo=null;
       text:req.body.text,
       sender:req.user.username,
       date:Date.now(),
-      pic:req.file
+      pic:req.file,
+      gif:req.body.gif
     }}},
     function(err){
       if (err) {

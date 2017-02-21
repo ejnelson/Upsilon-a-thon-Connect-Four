@@ -109,15 +109,18 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                       data: {file: file,
                              roomId:roomIdRes,
                             //  date:new Date(),
+                             gif:vm.gifToSend,
                              sender: userRes,
                              text: msg}
                   }).then(function (resp) {
                       console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.config.data);
                       vm.file=null;
+                      vm.gifToSend=null;
                   }, function (resp) {
                       console.log('Error status: ' + resp.status);
                   }, function (evt) {
                       vm.file=null;
+                      vm.gifToSend=null;
                       var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                       console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                   });
@@ -134,10 +137,12 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                      text:msg,
                      date:new Date(),
                      sender: userRes,
-                     pic:null
+                     pic:null,
+                     gif:vm.gifToSend
                    }
                    console.log(messageObject);
                    socket.emit('chat message', messageObject);
+                   vm.gifToSend=null;
                  }
              });
            });
@@ -185,9 +190,13 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                 console.log(resp);
                 vm.gifList=resp;
               });
-              // vm.gifShow=false;
             }
 
+            vm.addGif=function(gifUrl){
+              vm.gifToSend=gifUrl;
+              vm.gifShow=false;
+              console.log('gif to send',vm.gifToSend);
+            }
 
 
 
