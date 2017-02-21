@@ -1,5 +1,5 @@
-angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload','$document','$timeout','editProfileService','getRoomPicsService',
-  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload,$document,$timeout,editProfileService,getRoomPicsService) {
+angular.module("myApp").controller("RoomController", ['$location','$http','$scope','roomViewService','usernameStoreService','uploadService','Upload','$document','$timeout','editProfileService','getRoomPicsService','giphyService',
+  function($location,$http,$scope,roomViewService,usernameStoreService,uploadService,Upload,$document,$timeout,editProfileService,getRoomPicsService,giphyService) {
     console.log('Room controller loaded');
     var vm=this;
     var currentSocket=null;
@@ -174,6 +174,19 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
            }
 
 
+           vm.showGifStuff=function($event){
+             $event.preventDefault();
+             vm.gifShow=true;
+           }
+
+            vm.searchForGif=function($event){
+              $event.preventDefault();
+              giphyService.searchingForGif(vm.gifSearchInput).then(function(resp){
+                console.log(resp);
+                vm.gifList=resp;
+              });
+              // vm.gifShow=false;
+            }
 
 
 

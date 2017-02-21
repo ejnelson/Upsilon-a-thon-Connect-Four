@@ -6,7 +6,10 @@
   <ul id="messages" scroll-glue-bottom="glued" >
     <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages track by $index" repeat-end="roomCtrl.onEnd()">
       <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username && !message.userPic ">{{message.sender}}: </span>
-      <img id="messageSenderPic" ng-click="roomCtrl.profileInfo(message.sender)" class="fa fa-user-circle" ng-show="message.userPic && message.sender!= roomCtrl.roomUser.username" src="{{message.userPic}}" ng-src="{{message.userPic}}" />
+      <div id="messageSenderPicDiv" style="background-image:url({{message.userPic}})" ng-click="roomCtrl.profileInfo(message.sender)"  ng-show="message.userPic && message.sender!= roomCtrl.roomUser.username">
+
+      </div>
+
       <!-- <br ng-show="message.sender!= roomCtrl.roomUser.username"/> -->
       <span id="messageMessage"  ng-show="message.text!='' &&message.text!=undefined&&message.text!=null"class="messageText">{{message.text}}</span>
       <img class="messagesPicture" ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
@@ -16,7 +19,7 @@
 
 <form name="messageForm" id="messageSend" ng-submit="messageForm.$valid" action="">
   <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
-  <button id="gifButton"ng-click="roomCtrl.searchForGif()"></button>
+  <button id="gifButton" ng-click="roomCtrl.showGifStuff($event)" class=" fa fa-film"></button>
   <button class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
               <!-- <button class="fa fa-file-image-o"></button> -->
               <span ng-show="roomCtrl.file" id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file ">
@@ -32,5 +35,20 @@
     <p class="senderStuff" id="senderName">Name: {{roomCtrl.senderFirstName}} {{roomCtrl.senderLastName}}</p>
     <p class="senderStuff" id="senderEmail">Email: {{roomCtrl.senderEmail}}</p>
     <p class="senderStuff" id="senderBio">Bio: {{roomCtrl.senderBio}}</p>
+  </div>
+</div>
+
+<div id="gifSearchContainer"  ng-show="roomCtrl.gifShow" ng-init="roomCtrl.gifShow=false">
+  <div id="gifSearch">
+    <ul>
+      <li class="gifItem" ng-repeat="gif in roomCtrl.gifList">
+        <img src="{{gif.images.original.url}}" ng-src="{{gif.images.original.url}}" />
+
+      </li>
+    </ul>
+    <form name="gifSearchForm" id="gifSearchForm" ng-submit="gifSearchForm.$valid" action="">
+      <input id="gifSearchInput" ng-model="roomCtrl.gifSearchInput" autocomplete="off" />
+      <button id="gifButtonSearch" ng-click="roomCtrl.searchForGif($event)" value="search">search</button>
+    </form>
   </div>
 </div>

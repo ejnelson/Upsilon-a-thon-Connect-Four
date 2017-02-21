@@ -156,7 +156,6 @@ margin:10px;
 .profilePicButton{
   background-color: transparent;
   border:none;
-margin:4px;
   font-size:4em;
   color:white;
   float:right;
@@ -165,6 +164,9 @@ margin:4px;
   width:75px;
   border-radius:50%;
   overflow:hidden;
+  background-position-x:center;
+  background-position-y:center;
+  background-position:center;
   background-size:cover;
 }
 
@@ -478,10 +480,12 @@ padding:20px;
 font-family:"Helvetica",sans-serif;
 }
 
-  #messageSend { background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
+  #messageSend { z-index: 6;background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
   #messageSend input { border: 0; padding: 5px; width: 65%; margin:5px; border-radius:25px;}
   #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
- #gifButton{ background-image:url("/images/gificon.png"); background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
+ #gifButton{  background-position: center; background-size:cover;
+   background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
+
   #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 19%; color:white; padding: 10px; }
   /*#selectDiv button{height:100%; width:100%; display:inline; width:9%; border:none;}*/
   #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:85px;background-color: #eee}
@@ -496,11 +500,14 @@ font-family:"Helvetica",sans-serif;
   .floatRight{text-align: right; margin-right:10px; }
   .floatRight img{margin-left:auto !important;margin-right:10px;}
   .floatRight span{background-color:#ccc !important;}
-  #messageSenderPic{
+  #messageSenderPicDiv{
+    display:inline-block;
     margin-left:10px;
     height:50px;
     width:50px;
+    background-position: center;
     border-radius:50%;
+    background-size:cover;
   }
   #senderProfileContainer{
   height:100%;
@@ -518,7 +525,7 @@ font-family:"Helvetica",sans-serif;
   }
   #senderProfileText{
     padding:10px;
-    margin-top:200px;
+    margin-top:140px;
     font-size:16px;
     background-color: #1f0077;
     color:white;
@@ -539,6 +546,57 @@ font-family:"Helvetica",sans-serif;
   #senderProfileContainer.ng-hide-remove{
     transition: all ease 0.5s;
   }
+#gifSearchContainer{
+  position:fixed;
+  height:100%;
+  width:100%;
+
+  bottom:0px;
+  z-index:4;
+}
+#gifSearch{
+  position:absolute;
+  bottom:56px;
+  width:100%;
+
+  background-color:rgba(68, 68, 68, 0.75);
+
+}
+#gifSearchInput{ z-index:5;border: 0; padding: 5px; width: 50%; margin:5px; margin-left:20%; margin-bottom:10px; border-radius:25px;}
+#gifButton{;background-color:transparent;  width:auto;color:white; height: 100%; border: 2px solid white; border-radius:20px;padding: 10px; }
+#gifButtonSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
+
+
+  #gifSearchContainer.ng-hide {
+    /*top:-100%;
+    opacity:0;*/
+    bottom:-100%;
+  }
+#gifSearch ul{
+  max-height:150px;
+  overflow-x: auto;
+  overflow-y:hidden;
+  width:100%;
+  margin-left:10px;
+  white-space: nowrap;
+
+}
+.gifItem{
+  margin-left: 0px;
+  height:150px;
+  width:auto;
+  display:inline-block;
+  margin-right:10px;
+}
+
+  #gifSearchContainer.ng-hide-add,
+  #gifSearchContainer.ng-hide-remove{
+    transition: all ease 0.5s;
+  }
+
+
+
+
   /*---------------------------END room view--------------------------*/
 
   /*---------------------------photo view--------------------------*/
@@ -617,7 +675,7 @@ width:100%;
     width:100%;
     height:auto;
     left:0;
-    top:20%;
+    top:15%;
     z-index:4;
   }
 
