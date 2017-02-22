@@ -381,6 +381,7 @@ align-items: center;
   top:2.5%;
   padding:5px 25px;
   border-radius:30px;
+  display:inline;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .profileInput{
@@ -428,11 +429,11 @@ color: black;
   /*padding-top:5px;*/
 
 }
-#profileEditButtonGroup{width:65%;}
+#profileEditButtonGroup{width:65%; text-align: center;}
 .profileEditButton{
   line-height: 17px;
   font-size:16px;
-  width:30%;
+  width:28%;
   text-align: center;
   border:none;
   background-color: #1a0055;
@@ -506,8 +507,8 @@ font-family:"Helvetica",sans-serif;
 }
 
   #messageSend { z-index: 6;background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
-  #messageSend input { border: 0; padding: 5px; width: 64%; margin:5px; border-radius:25px;}
-  #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px;margin-right:1%; }
+  #messageSend input { border: 0; padding: 5px; width: 62%; margin:5px; border-radius:25px;}
+  #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
  #gifButton{  background-position: center; background-size:cover;
    background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
 
