@@ -362,7 +362,7 @@ z-index:2;
 /*---------------------------Edit Profile--------------------------*/
 #editProfile{
   background-color: #1f0077;
-  height:100%;
+height:100%;
 color:white;
 line-height: 22px;
 font-size:18px;
@@ -372,15 +372,20 @@ justify-content:space-around;
 align-items: center;
 }
 #profileUsername{
-  font-size: 35px;
+  font-size: 25px;
   color:white;
   /*margin-top:20px;*/
   /*padding-top:15px;*/
   text-align: center;
+  position:absolute;
+  top:2.5%;
+  padding:5px 25px;
+  border-radius:30px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .profileInput{
-  line-height: 22px;
-  font-size:18px;
+  line-height: 17px;
+  font-size:16px;
   width:65%;
   text-align: center;
   background-color:transparent;
@@ -404,8 +409,8 @@ width:100%;
 .profileP{
 font-family:"leagueSpartan",serif;
 /*position:absolute;*/
-line-height: 22px;
-font-size:18px;
+line-height: 17px;
+font-size:16px;
 width:75%;
 color: black;
 
@@ -425,14 +430,18 @@ color: black;
 }
 #profileEditButtonGroup{width:65%;}
 .profileEditButton{
-  line-height: 22px;
-  font-size:18px;
-  width:100%;
+  line-height: 17px;
+  font-size:16px;
+  width:30%;
   text-align: center;
   border:none;
   background-color: #1a0055;
   color:white;
   position:relative;
+  display:inline-block;
+  margin:1%;
+  padding:15px 0px;
+  border-radius:10px;
   /*left:12.5%;*/
 
 
@@ -442,8 +451,8 @@ color: black;
 }
 .editProfileLabel{
 
-  line-height: 22px;
-  font-size:18px;
+  line-height: 17px;
+  font-size:16px;
   width:75%;
   text-align: center;
   border:none;
@@ -451,8 +460,8 @@ color: black;
 
 }
 #profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; width:100%; text-align: center;  }
-#profilePicSelect img{height:150px;width:auto;margin: 0 auto;}
-#profilePicSelect span{font-size:0.3em; line-height: 1.5em; z-index:4;}
+#profilePicSelect img{height:200px;width:auto;margin: 0 auto;border-radius:30px;}
+#profilePicSelect span{font-size:0.2em; line-height: 1.1em; z-index:4;}
 .fileGreen{color:#ddd;}
 #
 /*---------------------------END edit profile--------------------------*/
