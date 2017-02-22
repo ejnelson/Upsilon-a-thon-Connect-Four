@@ -1,10 +1,10 @@
 <header class="container-fluid" ng-init="roomCtrl.getMessages()">
-  <button ng-click="roomCtrl.backToInbox()" class="addButton fa fa-arrow-left"></button>
-  <button ng-click="roomCtrl.photoView()" class="profileButton fa fa-picture-o"></button>
+  <button ng-click="roomCtrl.backToInbox()" class="col-xs-3 addButton fa fa-arrow-left"></button>
+  <button ng-click="roomCtrl.photoView()" class="profileButton col-xs-3  fa fa-picture-o"></button>
 </header>
 <div scroll-glue-bottom="glued" id="chatMessages">
   <ul id="messages" scroll-glue-bottom="glued" >
-    <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages track by $index" repeat-end="roomCtrl.onEnd()">
+    <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages  track by $index" repeat-end="roomCtrl.onEnd()">
       <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username && !message.userPic ">{{message.sender}}: </span>
       <div id="messageSenderPicDiv" style="background-image:url({{message.userPic}})" ng-click="roomCtrl.profileInfo(message.sender)"  ng-show="message.userPic && message.sender!= roomCtrl.roomUser.username">
 
@@ -20,11 +20,11 @@
 
 <form name="messageForm" id="messageSend" ng-submit="messageForm.$valid" action="">
   <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
-  <button id="gifButton" ng-click="roomCtrl.showGifStuff($event)" class=" fa fa-film"></button>
-  <button class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+  <div id="gifButton" ng-click="roomCtrl.showGifStuff($event)" class=" fa fa-film"></div>
+  <div class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
               <!-- <button class="fa fa-file-image-o"></button> -->
               <span ng-show="roomCtrl.file" id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file ">
-  </button>
+  </div>
   <button type="submit" ng-submit="messageForm.$valid" class="fa fa-paper-plane" ng-click="roomCtrl.send($event,roomCtrl.message)"></button>
 </form>
 
@@ -48,9 +48,11 @@
       </li>
     </ul>
     <form name="gifSearchForm" id="gifSearchForm" ng-submit="gifSearchForm.$valid" action="">
-      <button id="cancelGifSearch" ng-click="roomCtrl.gifShow=false">cancel</button>
+      <div id="cancelGifSearch" ng-click="roomCtrl.cancelGifSearch($event)">cancel</div>
       <input id="gifSearchInput" ng-model="roomCtrl.gifSearchInput" autocomplete="off" />
-      <button id="gifButtonSearch" ng-click="roomCtrl.searchForGif($event)" value="search">search</button>
+      <button type="submit" id="gifButtonSearch" ng-click="roomCtrl.searchForGif($event)" value="search">search</button>
     </form>
+
   </div>
 </div>
+<img ng-show="roomCtrl.gifToSend" id="fileThumb" ng-src="{{roomCtrl.gifToSend}}">

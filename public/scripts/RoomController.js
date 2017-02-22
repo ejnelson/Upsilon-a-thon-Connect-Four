@@ -5,6 +5,8 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
     var currentSocket=null;
     var div=document.getElementById("chatMessages");
 
+
+
     vm.onEnd = function(){
                     $timeout(function(){
                       div.scrollTop=div.scrollHeight;
@@ -72,6 +74,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
             // currentSocket=socket;
             // socket.emit('chat message', 'hello room #'+roomId);
             socket.on('chat message', function(oneMessage){
+
                var userArray=[]
                resp.forEach(function(user){
                  userArray.push(user.username);
@@ -81,11 +84,23 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                  oneMessage.userPic=resp[userIndex].imgUrl;
                }
                vm.messages.push(oneMessage);
+
                console.log(vm.messages);
-               console.log(oneMessage);
-               $scope.$apply();
+               console.log(oneMessage.sender);
+               console.log(vm.roomUser.username);
+
+
+              $scope.$apply();
+
+
+
                vm.onEnd();
+               if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
+                   // If it's okay let's create a notification
+                   var notification = new Notification(oneMessage.sender,{body:oneMessage.text,icon:'/images/blackbulletstransparent.png'});
+                 }
            });
+
            vm.backToInbox=function(){
              socket.emit('force disconnect')
              socket.disconnect();
@@ -196,6 +211,11 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
               vm.gifToSend=gifUrl;
               vm.gifShow=false;
               console.log('gif to send',vm.gifToSend);
+            }
+
+            vm.cancelGifSearch=function($event){
+              $event.preventDefault();
+              vm.gifShow=false;
             }
 
 

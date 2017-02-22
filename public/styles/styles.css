@@ -7,6 +7,18 @@ html, body,.view-animate-container,.view-animate {margin: 0; height: 100%; width
     outline: none;
 }
 ::-webkit-scrollbar { display: none; }
+
+/*profilebutton class wouldn't work if placed lower in doc, is for roomview*/
+.profileButton{
+  background-color: transparent;
+  border:none;
+margin:10px;
+  font-size:4.28em;
+  color:white;
+  float:right;
+  margin-right:-5px;
+  padding-top:5px;
+}
 /*----------------------LOGIN PAGE--------------------*/
 
 
@@ -41,7 +53,7 @@ height:100%;
    color: white;
    font-family:"Helvetica",sans-serif;
    font-weight: 100;
-   font-size:20px;
+   font-size:1.2em;
 }
 #loginCenter{
   position:fixed;
@@ -142,16 +154,10 @@ font-size:20px;
   margin:10px;
   font-size:4.28em;
   color:white;
+  margin-left:-10px;
+  padding-top:5px;
 }
-.profileButton{
-  background-color: transparent;
-  border:none;
-margin:10px;
-  font-size:4.28em;
-  color:white;
-  float:right;
 
-}
 
 .profilePicButton{
   background-color: transparent;
@@ -188,7 +194,7 @@ header{
   width:100%;
   position:fixed;
   z-index:2;
-  max-height:6.072em;
+
 }
 #addContainer{
   height:100%;
@@ -307,7 +313,7 @@ height:100%;
   border:none;
   /*border-bottom: 3px solid white;*/
   background-color: white;
-  border-radius:10px;
+  border-radius:30px;
   color:black;
   /*margin-left:50px;*/
 }
@@ -318,8 +324,8 @@ height:100%;
 
 }
 .contactUsername{
-  margin-top:20px;
-  font-size:25px;
+  margin-top:0.6em;
+  font-size:2em;
   font-family:"leagueSpartan",serif;
 
 }
@@ -360,19 +366,22 @@ z-index:2;
 color:white;
 line-height: 22px;
 font-size:18px;
-
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+align-items: center;
 }
 #profileUsername{
   font-size: 35px;
   color:white;
   /*margin-top:20px;*/
-  padding-top:15px;
+  /*padding-top:15px;*/
   text-align: center;
 }
 .profileInput{
   line-height: 22px;
   font-size:18px;
-  width:55%;
+  width:65%;
   text-align: center;
   background-color:transparent;
   border:none;
@@ -390,7 +399,7 @@ z-index:2;
 .profileInputDiv{
   /*position:relative;*/
 text-align: center;
-
+width:100%;
 }
 .profileP{
 font-family:"leagueSpartan",serif;
@@ -405,26 +414,26 @@ color: black;
 /*padding-top:150px;*/
 }
 #lastName{
-padding-top:5px;
+/*padding-top:5px;*/
 }
 #email{
-  padding-top:5px;
+  /*padding-top:5px;*/
 }
 #bio{
-  padding-top:5px;
+  /*padding-top:5px;*/
 
 }
-
+#profileEditButtonGroup{width:65%;}
 .profileEditButton{
   line-height: 22px;
   font-size:18px;
-  width:75%;
+  width:100%;
   text-align: center;
   border:none;
   background-color: #1a0055;
   color:white;
   position:relative;
-  left:12.5%;
+  /*left:12.5%;*/
 
 
 }
@@ -441,12 +450,19 @@ padding-top:5px;
   color:white;
 
 }
-#profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; height:100px; width:100%; text-align: center;  }
-#profilePicSelect img{height:100px;width:auto;margin: 0 auto;}
-.fileGreen{color:green;}
+#profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; width:100%; text-align: center;  }
+#profilePicSelect img{height:150px;width:auto;margin: 0 auto;}
+#profilePicSelect span{font-size:0.3em; line-height: 1.5em; z-index:4;}
+.fileGreen{color:#ddd;}
 #
 /*---------------------------END edit profile--------------------------*/
 /*---------------------------room view--------------------------*/
+
+
+
+
+
+
 
 #fileName{
   position:absolute;
@@ -481,12 +497,12 @@ font-family:"Helvetica",sans-serif;
 }
 
   #messageSend { z-index: 6;background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
-  #messageSend input { border: 0; padding: 5px; width: 65%; margin:5px; border-radius:25px;}
-  #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
+  #messageSend input { border: 0; padding: 5px; width: 64%; margin:5px; border-radius:25px;}
+  #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px;margin-right:1%; }
  #gifButton{  background-position: center; background-size:cover;
    background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
 
-  #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 19%; color:white; padding: 10px; }
+  #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 9%; color:white; padding: 10px; }
   /*#selectDiv button{height:100%; width:100%; display:inline; width:9%; border:none;}*/
   #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:85px;background-color: #eee}
   #messages { height:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 20px; font-size:18px;}
@@ -519,18 +535,18 @@ font-family:"Helvetica",sans-serif;
   #senderPic{
 
   height:auto;
-  width:250px;
+  width:95%;
   margin-bottom:10px;
   border-radius: 30px;
   }
   #senderProfileText{
     padding:10px;
-    margin-top:140px;
+    margin-top:25%;
     font-size:16px;
     background-color: #1f0077;
     color:white;
     font-weight: 200;
-    width:275px;
+    width:65%;
     padding-left:15px;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
@@ -548,7 +564,7 @@ font-family:"Helvetica",sans-serif;
   }
 #gifSearchContainer{
   position:fixed;
-  height:100%;
+  height:70%;
   width:100%;
 
   bottom:0px;
@@ -565,9 +581,9 @@ font-family:"Helvetica",sans-serif;
 
 #gifSearchForm{text-align: center;}
 #gifSearchInput{ z-index:5;border: 0; padding: 5px; width: 50%; margin:5px;  margin-bottom:10px; border-radius:25px;}
-#gifButton{;background-color:transparent;  width:auto;color:white; height: 100%; border: 2px solid white; border-radius:20px;padding: 10px; }
+#gifButton{;background-color:transparent;  width:auto;color:white; height: 100%;  }
 #gifButtonSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
-#cancelGifSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
+#cancelGifSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; display:inline-block;}
 
 
   #gifSearchContainer.ng-hide {
@@ -604,12 +620,12 @@ font-family:"Helvetica",sans-serif;
 
   /*---------------------------photo view--------------------------*/
 #photoHeader{
-  font-size:30px;
+  font-size:2em;
   float:right;
   font-family:"leagueSpartan",serif;
   color:white;
-  margin-top:27px;
-  margin-right:15px;
+  margin-top:1em;
+  margin-right:0.5em;
 }
   #photosContainer{
 width:100%;

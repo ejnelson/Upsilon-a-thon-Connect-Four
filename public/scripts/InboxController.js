@@ -4,12 +4,19 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
     var vm=this;
     vm.userUsername='';
 
-        themeService.getTheme();
+      
     // vm.convoList=[
     //   {imgUrl:"/images/ollie.jpg",roomPeople:"Ollie",messagePreview:"hello I'm Ollie"},
     //   {imgUrl:"/images/erikface.jpeg",roomPeople:"Erik one",messagePreview:"hello I'm erik 1"},
     //   {imgUrl:"/images/erik-headshot.jpg",roomPeople:"Erik two",messagePreview:"hello I'm erik 2"},
     // ]
+    editProfileService.getProfile().then(function(user){
+
+      usernameStoreService.storeUsername(user.data[0].username);
+      console.log('this is the inbox user',user.data[0].username);
+      vm.findRooms();
+      themeService.getTheme();
+    });
 
 
     vm.findRooms=function(){
@@ -156,7 +163,7 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
     }
 
     vm.submitNewProfile=function(){
-      console.log(vm.editFirstName,vm.editLastName,vm.editEmail,vm.editBio,vm.editTheme);
+      console.log(vm.editFirstName+""+vm.editLastName+""+vm.editEmail+""+vm.editBio);
         if(vm.file){
           Upload.upload({
               url: '/uploads',

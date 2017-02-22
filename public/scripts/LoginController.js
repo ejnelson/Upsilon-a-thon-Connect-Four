@@ -1,10 +1,11 @@
 angular.module("myApp").controller("LoginController", [
-  '$location','$http','usernameStoreService','themeService',
-  function($location,$http,usernameStoreService,themeService) {
+  '$location','$http','usernameStoreService','themeService','notificationService',
+  function($location,$http,usernameStoreService,themeService,notificationService) {
     console.log('login controller loaded')
     var vm=this;
 
-
+    notificationService.askForPermision();
+    
     vm.login = function() {
 
 

@@ -20,14 +20,14 @@ router.post('/',function(req,res){
     user.save(function(err){
       if(err){
         console.log('error saving new user');
-        res.sendStatus(500);
+        res.status(400).send('username and password required');
       }else{
         console.log('created new user');
 
         req.login(user, function(err){
           if(err){
             console.log('error logging in newly registered usser',err);
-            return res.sendStatus(500);
+            return res.sendStatus(400);
           }
         });
 
