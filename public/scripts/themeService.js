@@ -8,10 +8,6 @@ angular.module('myApp').service('themeService', function ($http,$location) {
           var theme=res.data[0].theme;
           console.log('theme',res.data[0].theme);
           switch(theme){
-            case "Default":
-                var main= '#1f0077';
-                var dark='#1a0055';
-                break;
             case 'Go':
                 var main='rgb(24, 142, 0)';
                 var dark='rgb(20, 85, 0)';
@@ -32,6 +28,10 @@ angular.module('myApp').service('themeService', function ($http,$location) {
                 var main='blue';
                 var dark='darkBlue';
                 break;
+            default:
+                    var main= '#1f0077';
+                    var dark='#1a0055';
+                    break;
           }
 
 
