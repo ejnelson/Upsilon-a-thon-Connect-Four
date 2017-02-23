@@ -35,11 +35,12 @@ angular.module('myApp').service('themeService', function ($http,$location) {
           }
 
 
-
-
+          
 
           var sheet = document.createElement('style')
           sheet.innerHTML =
+          "#searchForContact{background-color:"+main+"}"+
+          "#usersToAddToRoom{background-color:"+main+"}"+
           "header{background-color:"+main+"}"+
           ".newContactMain{background-color:"+main+";}"+
           "#searchForContact{background-color:"+main+";}"+
