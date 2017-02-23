@@ -692,7 +692,7 @@ width:100%;
 
   #photos img{
   	display: inline-block;
-  	margin-bottom: 10px;
+  	
   	width: 100%;
   }
   #photos img:hover{
