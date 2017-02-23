@@ -6,7 +6,7 @@ const messagesSchema= new mongoose.Schema({
   text:String,
   sender:String,
   date:Date,
-  pic:String,
+  pic:mongoose.Schema.Types.Mixed,
   gif:String
 });
 

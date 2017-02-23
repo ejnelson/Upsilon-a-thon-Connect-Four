@@ -136,6 +136,10 @@ io.on('connection', function(socket){
 
   });
 
+  socket.on('new convo',function(convo){
+    io.to('inbox').emit('new convo',convo);
+  });
+
   socket.on('chat message', function(msgObject){
 
     io.to(room).emit('chat message', msgObject);

@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
   Room.find({users:{$in:[req.user.id]}}, function (err, foundRoom) {
       // console.log('what is in foundRoom',foundRoom);
     if (err) {
-      res.sendStatus(500);
+      res.status(500).send(err);
     }else{
 
       res.status(200).send(foundRoom);

@@ -5,11 +5,42 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
     vm.userUsername='';
 
 
-    // vm.convoList=[
-    //   {imgUrl:"/images/ollie.jpg",roomPeople:"Ollie",messagePreview:"hello I'm Ollie"},
-    //   {imgUrl:"/images/erikface.jpeg",roomPeople:"Erik one",messagePreview:"hello I'm erik 1"},
-    //   {imgUrl:"/images/erik-headshot.jpg",roomPeople:"Erik two",messagePreview:"hello I'm erik 2"},
-    // ]
+
+    let socket_connect = function (room) {
+      console.log('sockets is connecting to',room);
+      return io({
+          query: 'r_var='+room,
+          'forceNew': true
+          // reconnection: true,
+          // reconnectionDelay: 1000,
+          // reconnectionDelayMax : 5000,
+          // reconnectionAttempts: Infinity,
+          // 'reconnection limit': 3000,
+          // 'max reconnection attempts': Number.MAX_VALUE,
+          // 'connect timeout':7000
+      });
+    }
+
+
+    let roomId = 'inbox';
+     let socket      = socket_connect(roomId);
+
+     socket.on('new convo', function(convo){
+       console.log(convo);
+       if(convo.usernames.indexOf(vm.userUsername)>-1){
+          vm.convoList.push(convo);
+          console.log('convo added');
+       }
+        $scope.$apply();
+        if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
+            // If it's okay let's create a notification
+            var notification = new Notification('inbox',{body:'you have a new conversation!',icon:'/images/blackbulletstransparent.png'});
+          }
+     });
+
+
+
+
     editProfileService.getProfile().then(function(user){
 
       usernameStoreService.storeUsername(user.data[0].username);
@@ -40,9 +71,12 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
             // res.data;
             vm.convoList=res.data;
             vm.convoList.forEach(function(each){
-              console.log(each.messages[0].date);
-              each.lastDate=each.messages[0].date;
-              $scope.$apply();
+              if(each.messages[0]){
+                each.lastDate=each.messages[each.messages.length-1].date;
+                console.log(each.lastDate, each.messages[each.messages.length-1].text);
+              }
+
+              // $scope.$apply();
             });
             console.log(vm.convoList);
           }).catch(function(err){
@@ -119,7 +153,7 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
         }).then(function(response){
           console.log(response);
           vm.goToRoomView(response.data._id);
-
+          socket.emit('new convo', response.data);
         }, function(error) {
           console.log('error registering in', error);
           alertify.alert('ERROR: could not create room');

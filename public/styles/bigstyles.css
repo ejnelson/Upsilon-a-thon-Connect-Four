@@ -1,5 +1,4 @@
-@media only screen and (max-width: 600px) {
-
+@media only screen and (min-width: 700px) {
 
 
 
@@ -33,7 +32,7 @@ margin:10px;
   /*align-content:center;*/
   /*justify-content: center;*/
 height:100%;
-  background: #1f0077; /* Old browsers */
+  background: #1f0077 ; /* Old browsers */
   /*background: -moz-linear-gradient(top,  #1f0077 0%, #6e46bd 50%, #1f0077 100%);
   background: -webkit-linear-gradient(top,  #1f0077 0%,#6e46bd 50%,#1f0077 100%);
   background: linear-gradient(to top,  #1f0077 0%,#6e46bd 50%,#1f0077 100%);
@@ -62,11 +61,14 @@ height:100%;
 }
 #loginCenter{
   position:fixed;
+display:flex;
+justify-content:space-around;
+flex-direction:column;
+height:80%;
 
-  bottom:5%;
-  left:12.5%;
+  left:30%;
 
-  width:75%;
+  width:40%;
   background-color: transparent;
   /*margin-left:-100px;*/
 
@@ -87,7 +89,6 @@ font-size:20px;
 
   color:white;
 }
-
 #loginFooter{
   margin-top:2em;
   text-align: center;
@@ -123,13 +124,13 @@ font-size:20px;
 #regCenter{
   position:fixed;
 
-  top:50%;
-  left:12.5%;
+  top:10%;
+  left:32.5%;
 
-  width:75%;
+  width:35%;
   background-color: transparent;
   /*margin-left:-250px;*/
-  margin-top:-80%;
+
   text-align: center;
 
 }
@@ -213,6 +214,9 @@ header{
   opacity:1;
   z-index:3;
   padding:10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 #coverUp{
   height:100px;
@@ -231,7 +235,7 @@ header{
 .addSomethingButton{
   padding:10px;
   text-align: center;
-  margin-top:20%;
+  /*margin-top:20%;*/
   height:30%;
   border:5px solid white;
   border-radius:50px;
@@ -308,6 +312,10 @@ max-width:75%;
 .newContactMain{
 background-color: #1f0077;
 height:100%;
+display:flex;
+flex-direction: column;
+justify-content: space-around;
+width:100%;
 }
 #newConvoBack{
   float:left;
@@ -360,7 +368,6 @@ z-index:2;
 margin-bottom:0px;
 background-color: #1f0077;
 padding:0px 10px;
-margin-top:10px;
 }
 #usersToAddToRoom li{
   display:inline;
@@ -748,4 +755,3 @@ width:100%;
   }
 
     /*---------------------------END photo view--------------------------*/
-  }
