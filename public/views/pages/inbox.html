@@ -10,14 +10,14 @@
 <div class="spacer">
 
 </div>
-<div ng-swipe-right="inboxCtrl.goToPhotoView(room._id)" ng-swipe-left="inboxCtrl.goToRoomView(room._id)" ng-repeat="room in inboxCtrl.convoList" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
+<div ng-swipe-right="inboxCtrl.goToPhotoView(room._id)" ng-swipe-left="inboxCtrl.goToRoomView(room._id)" ng-repeat="room in inboxCtrl.convoList | orderBy: room.lastDate" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
   <div class="roomPic" style="background-image: url(/images/blackbulletstransparent.png)">
     <!-- <img ng-src="{{convo.imgUrl}}" />  fa fa-users--><span id="roomPicPlaceholder" class="profileButton"></span>
   </div>
 
   <div class="messageContent">
     <p class="messageContentRoom">
-      <span ng-repeat="name in room.usernames | limitTo:4" ng-if="name!=inboxCtrl.userUsername">{{name}}  </span><span ng-if="room.usernames.length>4">...</span>
+      <span ng-repeat="name in room.usernames | limitTo:4 " ng-if="name!=inboxCtrl.userUsername">{{name}}  </span><span ng-if="room.usernames.length>4">...</span>
     </p>
     <p class="messageContentPreview">{{room.messages[room.messages.length - 1].text|limitTo:30}}{{room.messages[room.messages.length - 1].text.length>20?'...':''}}
     </p>

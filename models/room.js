@@ -2,12 +2,18 @@ const mongoose = require('mongoose');
 // const bcrypt=require('bcrypt');
 // const SALT_ROUNDS=10;
 
-
+const messagesSchema= new mongoose.Schema({
+  text:String,
+  sender:String,
+  date:Date,
+  pic:String,
+  gif:String
+});
 
 const roomSchema = new mongoose.Schema({
   users: Array,
   usernames:Array,
-  messages:[mongoose.Schema.Types.Mixed]
+  messages:[messagesSchema]
 });
 
 

@@ -4,7 +4,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
     var vm=this;
     var currentSocket=null;
     var div=document.getElementById("chatMessages");
-
+    vm.gifToSend=null;
 
 
     vm.onEnd = function(){
@@ -130,12 +130,12 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                   }).then(function (resp) {
                       console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.config.data);
                       vm.file=null;
-                      vm.gifToSend=null;
+                      vm.gifToSend='';
                   }, function (resp) {
                       console.log('Error status: ' + resp.status);
                   }, function (evt) {
                       vm.file=null;
-                      vm.gifToSend=null;
+                      vm.gifToSend='';
                       var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                       console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                   });
@@ -150,14 +150,14 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
                    var messageObject={
                      roomId:roomIdRes,
                      text:msg,
-                     date:new Date(),
+                    //  date:new Date(),
                      sender: userRes,
                      pic:null,
                      gif:vm.gifToSend
                    }
                    console.log(messageObject);
                    socket.emit('chat message', messageObject);
-                   vm.gifToSend=null;
+                   vm.gifToSend='';
                  }
              });
            });

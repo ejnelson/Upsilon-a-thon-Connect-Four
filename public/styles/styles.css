@@ -13,7 +13,7 @@ html, body,.view-animate-container,.view-animate {margin: 0; height: 100%; width
   background-color: transparent;
   border:none;
 margin:10px;
-  font-size:4.28em;
+  font-size:3em;
   color:white;
   float:right;
   margin-right:-5px;
@@ -90,15 +90,16 @@ font-size:20px;
 #loginFooter{
   position:absolute;
   text-align: center;
-  font-size:20px;
+
   color:white;
-  top:95%;
+  bottom:2%;
   width:100%;
   margin-bottom:10px;
-
+  font-size:1.2em;
 }
 #loginFooter a{
   color:white;
+
   text-decoration: underline;
 }
 #forgot{
@@ -141,9 +142,11 @@ font-size:20px;
   color:white;
 }
 .backButton{
-  font-size:30px;
   color:white;
-  margin:10px;
+margin:10px;
+  font-size:3em;
+  color:white;
+padding-top:5px;
 }
 
 /*---------------------------end register--------------------------*/
@@ -152,7 +155,7 @@ font-size:20px;
   background-color: transparent;
   border:none;
   margin:10px;
-  font-size:4.28em;
+  font-size:3em;
   color:white;
   margin-left:-10px;
   padding-top:5px;
@@ -162,12 +165,12 @@ font-size:20px;
 .profilePicButton{
   background-color: transparent;
   border:none;
-  font-size:4em;
+  font-size:3em;
   color:white;
   float:right;
-  margin:5px;
-  height:75px;
-  width:75px;
+margin:0.1em;
+  height:1.4em;
+  width:1.4em;
   border-radius:50%;
   overflow:hidden;
   background-position-x:center;
@@ -178,7 +181,7 @@ font-size:20px;
 
 
 .spacer{
-  height:85px;
+  height:4.5em;
   width:100%;
 }
 #roomPicPlaceholder{
@@ -271,18 +274,23 @@ img{
 }
 .messageContent{
 float:left;
-
+max-height:100%;
+overflow:hidden;
+max-width:75%;
 }
 .messageContentRoom{
   margin-top:20px;
-  font-size:20px;
+  font-size:1.2em;
   font-family:"leagueSpartan",serif;
+
 
 }
 .messageContentPreview{
-  font-size:20px;
+  font-size:1.2em;
   font-family:"Helvetica",serif;
   font-weight:100;
+  max-height:1.25em;
+  margin-bottom:0px;
 }
 
 
@@ -299,16 +307,16 @@ height:100%;
 }
 #newConvoBack{
   float:left;
-  font-size: 60px;
+
 }
 
 /*---------------------------END New Contact--------------------------*/
 /*---------------------------New Convo--------------------------*/
 #contactFilter{
-  line-height: 35px;
-  font-size:20px;
+  line-height: 2em;
+  font-size:1em;
   width:80%;
-  margin:10px 10%;
+  margin:15px 10%;
   text-align: center;
   border:none;
   /*border-bottom: 3px solid white;*/
@@ -337,21 +345,45 @@ z-index:2;
   border-bottom:none;
 }
 #usersToAddToRoom{
-  line-height: 30px;
-  font-size:20px;
+  line-height: 1.5em;
+  font-size:1.5em;
   color:white;
   display:inline-block;
-  width:50%;
+  width:100%;
   padding:0px;
   -webkit-padding-start: 0px;
+  color:white;
+margin-bottom:0px;
+background-color: #1f0077;
+padding:0px 10px;
 }
 #usersToAddToRoom li{
   display:inline;
 }
+.removeFromAdd{
+  height:2em;
+  width:2em;
+  margin-left:-0.3em;
+  background-color: transparent;
+  border:none;
+}
+#containerForAdd{
+  overflow:scroll;
+  width:100%;
+}
+#contactsContainer{
+  width:100%;
+  position:fixed;
+  top:75px;
+  bottom:49px;
+  display:flex;
+  flex-direction: column-reverse;
+
+}
 #newRoomButton{
   background-image: url(/images/bulletstransparent.png);
-  width:85px;
-  height:85px;
+  width:70px;
+  height:70px;
   display:inline;
   float:right;
   background-size:contain;
@@ -461,7 +493,7 @@ color: black;
 
 }
 #profilePicSelect{ font-size:5em; border:none; display:block;background-color:transparent; overflow:hidden; width:100%; text-align: center;  }
-#profilePicSelect img{height:200px;width:auto;margin: 0 auto;border-radius:30px;}
+#profilePicSelect img{height:2em;width:auto;margin: 0 auto;border-radius:30px;}
 #profilePicSelect span{font-size:0.2em; line-height: 1.1em; z-index:4;}
 .fileGreen{color:#ddd;}
 #
@@ -506,17 +538,17 @@ padding:20px;
 font-family:"Helvetica",sans-serif;
 }
 
-  #messageSend { z-index: 6;background-color: #1f0077; line-height: 30px; font-size:20px; padding: 3px; position: fixed; bottom: 00px; width: 100%; }
-  #messageSend input { border: 0; padding: 5px; width: 62%; margin:5px; border-radius:25px;}
-  #messageSend button { background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
- #gifButton{  background-position: center; background-size:cover;
-   background-color:transparent; width: 9%; color:white; height: 100%; border: none; padding: 10px; }
+  #messageSend { z-index: 6;background-color: #1f0077; line-height: 30px; font-size:1.2em; padding: 3px; position: fixed; bottom: 00px; width: 100%; display:flex; justify-content:space-around;align-items: center;}
+  #messageSend input { border: 0; font-size: 1.2em; padding: 5px; flex-grow:1; margin:5px; border-radius:25px;}
+  #messageSend button { background-color:transparent; width: 10%; color:white; height: 100%; border: none;  text-align: center;}
+ #gifButton{  background-position: center; background-size:cover; text-align: center;
+   background-color:transparent; width: 10% !important; color:white; height: 100%; border: none;  }
 
-  #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 9%; color:white; padding: 10px; }
+  #selectDiv{ background-color:transparent; overflow:hidden; display:inline; height: 100%; width: 10%; color:white; text-align: center;}
   /*#selectDiv button{height:100%; width:100%; display:inline; width:9%; border:none;}*/
-  #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:85px;background-color: #eee}
+  #chatMessages{overflow:auto; width: 100%; position:absolute; bottom:60px; top:70px;background-color: #eee}
   #messages { height:auto;  list-style-type: none; margin: 0; padding: 0; line-height: 20px; font-size:18px;}
-  .messagesPicture{height:200px;margin-left:50px;border-radius:30px;}
+  .messagesPicture{height:160px;margin-left:50px;border-radius:30px;}
 
   #messages li { padding: 5px 0px; display:block;background-color: #eee;height:auto;}
   #messageSender{ padding:none; background-color:transparent;font-family:"leagueSpartan",serif;}
@@ -574,7 +606,7 @@ font-family:"Helvetica",sans-serif;
   }
 #gifSearchContainer{
   position:fixed;
-  height:70%;
+
   width:100%;
 
   bottom:0px;
@@ -589,8 +621,8 @@ font-family:"Helvetica",sans-serif;
 
 }
 
-#gifSearchForm{text-align: center;}
-#gifSearchInput{ z-index:5;border: 0; padding: 5px; width: 50%; margin:5px;  margin-bottom:10px; border-radius:25px;}
+#gifSearchForm{text-align: center;display:flex;}
+#gifSearchInput{ z-index:5;border: 0; padding: 5px; flex-grow:1; margin:5px;  margin-bottom:10px; border-radius:25px;}
 #gifButton{;background-color:transparent;  width:auto;color:white; height: 100%;  }
 #gifButtonSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; }
 #cancelGifSearch{ z-index:5;background-color:transparent;  width:auto;color:white; height: 80%; border: 2px solid white; border-radius:20px;padding: 3px 10px; margin:5px;margin-bottom:10px; display:inline-block;}
@@ -630,12 +662,12 @@ font-family:"Helvetica",sans-serif;
 
   /*---------------------------photo view--------------------------*/
 #photoHeader{
-  font-size:2em;
+  font-size:1.7em;
   float:right;
   font-family:"leagueSpartan",serif;
   color:white;
   margin-top:1em;
-  margin-right:0.5em;
+
 }
   #photosContainer{
 width:100%;
@@ -643,12 +675,14 @@ width:100%;
   #photos{
     padding:0;
     -moz-column-count: 3;
-    -moz-column-gap: 10px;
+    -moz-column-gap: 5px;
     -webkit-column-count: 3;
-    -webkit-column-gap: 10px;
+    -webkit-column-gap: 5px;
     column-count: 3;
-    column-gap: 10px;
+    column-gap: 5px;
     width: 100%;
+    margin-bottom:5px;
+    margin-top:5px;
   }
 
   #photos img{

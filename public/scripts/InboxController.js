@@ -1,10 +1,10 @@
-angular.module("myApp").controller("InboxController", ['$location','$http','addContactService','getContactService','editProfileService','usernameStoreService','roomViewService','Upload','themeService',
-  function($location,$http,addContactService,getContactService,editProfileService,usernameStoreService,roomViewService,Upload,themeService) {
+angular.module("myApp").controller("InboxController", ['$location','$http','addContactService','getContactService','editProfileService','usernameStoreService','roomViewService','Upload','themeService','$scope',
+  function($location,$http,addContactService,getContactService,editProfileService,usernameStoreService,roomViewService,Upload,themeService,$scope) {
     console.log('Inbox controller loaded');
     var vm=this;
     vm.userUsername='';
 
-      
+
     // vm.convoList=[
     //   {imgUrl:"/images/ollie.jpg",roomPeople:"Ollie",messagePreview:"hello I'm Ollie"},
     //   {imgUrl:"/images/erikface.jpeg",roomPeople:"Erik one",messagePreview:"hello I'm erik 1"},
@@ -39,6 +39,12 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
             // console.log('returned from data search with',res);
             // res.data;
             vm.convoList=res.data;
+            vm.convoList.forEach(function(each){
+              console.log(each.messages[0].date);
+              each.lastDate=each.messages[0].date;
+              $scope.$apply();
+            });
+            console.log(vm.convoList);
           }).catch(function(err){
             console.log("error getting contacts",err);
           });
@@ -88,7 +94,14 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
     vm.contactsUsernames=[];
     vm.addUserToAddList=function(contact){
       console.log('awesome add this person');
-      vm.contactsToAddList.push(contact);
+
+      if(vm.contactsToAddList.indexOf(contact)== -1){
+        vm.contactsToAddList.push(contact);
+      }
+    }
+    vm.removeFromContactsToAddList=function(contact){
+      var index=vm.contactsToAddList.indexOf(contact);
+      vm.contactsToAddList.splice(index,1);
     }
 
     vm.createNewRoom=function(){

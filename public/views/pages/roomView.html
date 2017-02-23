@@ -4,8 +4,8 @@
 </header>
 <div scroll-glue-bottom="glued" id="chatMessages">
   <ul id="messages" scroll-glue-bottom="glued" >
-    <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages  track by $index" repeat-end="roomCtrl.onEnd()">
-      <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username && !message.userPic ">{{message.sender}}: </span>
+    <li ng-class="{floatRight: message.sender== roomCtrl.roomUser.username}" ng-repeat="message in roomCtrl.messages track by $index" repeat-end="roomCtrl.onEnd()">
+      <span id="messageSender" class="messageText" ng-show="message.sender!= roomCtrl.roomUser.username && !message.userPic " ng-click="roomCtrl.profileInfo(message.sender)">{{message.sender}}: </span>
       <div id="messageSenderPicDiv" style="background-image:url({{message.userPic}})" ng-click="roomCtrl.profileInfo(message.sender)"  ng-show="message.userPic && message.sender!= roomCtrl.roomUser.username">
 
       </div>

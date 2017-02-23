@@ -145,7 +145,7 @@ io.on('connection', function(socket){
       {$push:{messages:{
         text:msgObject.text,
         sender:msgObject.sender,
-        date:Date.now(),
+        date:new Date(),
         pic:msgObject.pic,
         gif:msgObject.gif
       }}},
@@ -168,7 +168,7 @@ app.post('/', upload.single('file'), function(req, res) {
   console.log('here is the req.body',req.body);
 
   var msgObjectTwo={
-    date: Date.now(),
+    date: new Date(),
     pic: req.file,
     text: req.body.text,
     roomId:req.body.roomId,
@@ -182,7 +182,7 @@ msgObjectTwo=null;
     {$push:{messages:{
       text:req.body.text,
       sender:req.user.username,
-      date:Date.now(),
+      date:new Date(),
       pic:req.file,
       gif:req.body.gif
     }}},
