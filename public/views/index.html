@@ -23,7 +23,7 @@
     <script src="/vendors/alertify.js"></script>
     <script src="/vendors/angular-touch.min.js"></script>
     <script src="/scripts/client.js"></script>
-    <script src="/scripts/notificationService.js"></script>
+    <!-- <script src="/scripts/notificationService.js"></script> -->
     <script src="/scripts/giphyService.js"></script>
     <script src="/scripts/getRoomPicsService.js"></script>
     <script src="/scripts/addContactService.js"></script>
@@ -51,25 +51,25 @@
 
 
 /* Android Browser hack */
-window.addEventListener("load", function() { window.scrollTo(0, 0); });
+// window.addEventListener("load", function() { window.scrollTo(0, 0); });
 
    // use this with care, only if you don't have overflow content to be scrolled.
    // document.addEventListener("touchmove",   function(e) { e.preventDefault() });
 /* End Android hack */
 
-function fs() {
-	var body = document.documentElement;
-	if (body.requestFullscreen) {
-		body.requestFullscreen();
-	} else if (body.webkitRequestFullscreen) {
-		body.webkitRequestFullscreen();
-	} else if (body.mozRequestFullScreen) {
-		body.mozRequestFullScreen();
-	} else if (body.msRequestFullscreen) {
-		body.msRequestFullscreen();
-	}
-
-}
+// function fs() {
+// 	var body = document.documentElement;
+// 	if (body.requestFullscreen) {
+// 		body.requestFullscreen();
+// 	} else if (body.webkitRequestFullscreen) {
+// 		body.webkitRequestFullscreen();
+// 	} else if (body.mozRequestFullScreen) {
+// 		body.mozRequestFullScreen();
+// 	} else if (body.msRequestFullscreen) {
+// 		body.msRequestFullscreen();
+// 	}
+//
+// }
 
 </script>
     </script>
@@ -78,6 +78,7 @@ function fs() {
   <body ng-app="myApp" >
 <!-- <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script> -->
 <script src="/vendors/socket.io.js"></script>
+<!-- <script src="/vendors/socket.io"></script> -->
     <ng-view></ng-view>
 
   </body>

@@ -12,7 +12,7 @@
 </div>
 <div ng-swipe-right="inboxCtrl.goToPhotoView(room._id)" ng-swipe-left="inboxCtrl.goToRoomView(room._id)" ng-repeat="room in inboxCtrl.convoList | orderBy: 'lastDate':true" ng-click="inboxCtrl.goToRoomView(room._id)" class=" animate-repeat col-xs-12 clearfix convo">
   <div class="roomPic" style="background-image: url(/images/blackbulletstransparent.png)">
-    <!-- <img ng-src="{{convo.imgUrl}}" />  fa fa-users--><span id="roomPicPlaceholder" class="profileButton"></span>
+    <span id="roomPicPlaceholder" class="profileButton"></span>
   </div>
 
   <div class="messageContent">

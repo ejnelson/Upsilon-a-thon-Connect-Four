@@ -1,6 +1,6 @@
 angular.module("myApp").controller("LoginController", [
-  '$location','$http','usernameStoreService','themeService','notificationService',
-  function($location,$http,usernameStoreService,themeService,notificationService) {
+  '$location','$http','usernameStoreService','themeService',
+  function($location,$http,usernameStoreService,themeService) {
     console.log('login controller loaded')
     var vm=this;
 

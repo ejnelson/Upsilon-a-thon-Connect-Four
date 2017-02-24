@@ -11,13 +11,6 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
       return io({
           query: 'r_var='+room,
           'forceNew': true
-          // reconnection: true,
-          // reconnectionDelay: 1000,
-          // reconnectionDelayMax : 5000,
-          // reconnectionAttempts: Infinity,
-          // 'reconnection limit': 3000,
-          // 'max reconnection attempts': Number.MAX_VALUE,
-          // 'connect timeout':7000
       });
     }
 
@@ -32,10 +25,7 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
           console.log('convo added');
        }
         $scope.$apply();
-        // if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
-        //     // If it's okay let's create a notification
-        //     var notification = new Notification('inbox',{body:'you have a new conversation!',icon:'/images/blackbulletstransparent.png'});
-        //   }
+
      });
 
 
