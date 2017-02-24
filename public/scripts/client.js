@@ -136,6 +136,9 @@ app.config(function($routeProvider,$locationProvider){
             })
           }
         }
+  }).when('/game',{
+    templateUrl:'views/pages/game.html',
+    controller:'GameController as gameCtrl',
   });
   $locationProvider.html5Mode(true);
 
