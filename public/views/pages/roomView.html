@@ -12,7 +12,7 @@
 
       <!-- <br ng-show="message.sender!= roomCtrl.roomUser.username"/> -->
       <span id="messageMessage"  ng-show="message.text!='' &&message.text!=undefined&&message.text!=null"class="messageText">{{message.text}}</span>
-      <img class="messagesPicture" ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" ngf-fix-orientation/>
+      <img class="messagesPicture" ng-show="message.pic" src="{{message.pic.location}}" ng-src="{{message.pic.location}}" />
       <img class="messagesPicture" ng-show="message.gif&&message.gif!='null'" src="{{message.gif}}" ng-src="{{message.gif}}" />
      </li>
   </ul>
@@ -21,16 +21,16 @@
 <form name="messageForm" id="messageSend" ng-submit="messageForm.$valid" action="">
   <input id="m" ng-model="roomCtrl.message" autocomplete="off" />
   <div id="gifButton" ng-click="roomCtrl.showGifStuff($event)" class=" fa fa-film"></div>
-  <div class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}" ngf-fix-orientation="true"> 
+  <div class="fa fa-file-image-o" id="selectDiv" ngf-select ng-model="roomCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}" ngf-fix-orientation="true">
               <!-- <button class="fa fa-file-image-o"></button> -->
-              <span ng-show="roomCtrl.file" id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file " ngf-fix-orientation>
+              <span ng-show="roomCtrl.file" id="fileName"> {{roomCtrl.file.$ngfName}} </span> <img ng-show="roomCtrl.file" id="fileThumb" ngf-thumbnail="roomCtrl.file " >
   </div>
   <button type="submit" ng-submit="messageForm.$valid" class="fa fa-paper-plane" ng-click="roomCtrl.send($event,roomCtrl.message)"></button>
 </form>
 
 <div id="senderProfileContainer" ng-click="roomCtrl.hideSenderStuff()" ng-show="roomCtrl.show">
   <div id="senderProfileText">
-    <img id="senderPic" src="{{roomCtrl.senderPic}}" ng-src="{{roomCtrl.senderPic}}" ngf-fix-orientation/>
+    <img id="senderPic" src="{{roomCtrl.senderPic}}" ng-src="{{roomCtrl.senderPic}}" />
 
     <p class="senderStuff" id="senderUsername">Username: {{roomCtrl.senderUsername}}</p>
     <p class="senderStuff" id="senderName">Name: {{roomCtrl.senderFirstName}} {{roomCtrl.senderLastName}}</p>
