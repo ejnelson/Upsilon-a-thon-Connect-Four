@@ -5,7 +5,7 @@
   </p>
   <div id="profilePic">
 
-    <button  ng-class="{'fa fa-file-image-o':inboxCtrl.pic==null,fileGreen:inboxCtrl.file!=null}" id="profilePicSelect" ngf-select ng-model="inboxCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}">
+    <button  ng-class="{'fa fa-file-image-o':inboxCtrl.pic==null,fileGreen:inboxCtrl.file!=null}" id="profilePicSelect" ngf-select ng-model="inboxCtrl.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"  ngf-resize="{width: 500, height: 500}" ngf-fix-orientation="true">
                 <img ng-show="inboxCtrl.pic" ng-src="{{inboxCtrl.pic}}" src="{{inboxCtrl.pic}}" />
                 <span ng-show="inboxCtrl.file" id="fileName"> {{inboxCtrl.file.$ngfName}} on submit</span>
                 <!-- <img ng-show="!inboxCtrl.pic" id="fileThumb" ngf-thumbnail="inboxCtrl.file "> -->
