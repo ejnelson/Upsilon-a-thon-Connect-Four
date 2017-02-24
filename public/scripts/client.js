@@ -20,7 +20,7 @@ app.config(function($routeProvider,$locationProvider){
   }).when('/inbox',{
     templateUrl:'views/pages/inbox.html',
     controller: 'InboxController as inboxCtrl',
-    //this resolve section of code prevents users from visiting inbox unless they are logged in
+    // this resolve section of code prevents users from visiting inbox unless they are logged in
     resolve: {
       _: function ($location,$http) {
             $http.get('/loginStatus').then(function(res){

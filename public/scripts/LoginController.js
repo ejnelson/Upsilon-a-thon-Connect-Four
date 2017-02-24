@@ -4,9 +4,16 @@ angular.module("myApp").controller("LoginController", [
     console.log('login controller loaded')
     var vm=this;
 
-    notificationService.askForPermision();
-    
-    vm.login = function() {
+    // Notification.permission === "granted";
+        // If it's okay let's create a notification
+      //   notificationService.askForPermision();
+      // }
+    // notificationService.askForPermision();
+
+    vm.login = function($event) {
+      $event.preventDefault();
+      // $event.stopPropagation();
+// alertify.alert('log in');
 
 
       console.log('logging in');
@@ -19,15 +26,16 @@ angular.module("myApp").controller("LoginController", [
         $location.path('/inbox');
 
       }, function(error) {
-        // alertify.alert('Wrong username or password');
         alertify.alert('Wrong username or password');
 
         console.log('error loggin in', error);
       });
+
     };
 
 
-    vm.forgot=function(){
+    vm.forgot=function($event){
+      $event.preventDefault();
       alertify.alert('TOO BAD');
     }
 

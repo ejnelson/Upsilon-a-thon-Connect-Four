@@ -32,10 +32,10 @@ angular.module("myApp").controller("InboxController", ['$location','$http','addC
           console.log('convo added');
        }
         $scope.$apply();
-        if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
-            // If it's okay let's create a notification
-            var notification = new Notification('inbox',{body:'you have a new conversation!',icon:'/images/blackbulletstransparent.png'});
-          }
+        // if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
+        //     // If it's okay let's create a notification
+        //     var notification = new Notification('inbox',{body:'you have a new conversation!',icon:'/images/blackbulletstransparent.png'});
+        //   }
      });
 
 

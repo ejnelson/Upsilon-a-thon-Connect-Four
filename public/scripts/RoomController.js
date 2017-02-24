@@ -95,10 +95,11 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
 
 
                vm.onEnd();
-               if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
-                   // If it's okay let's create a notification
-                   var notification = new Notification(oneMessage.sender,{body:oneMessage.text,icon:'/images/blackbulletstransparent.png'});
-                 }
+              //  if (Notification.permission === "granted"&&oneMessage.sender!=vm.roomUser.username) {
+              //      // If it's okay let's create a notification
+              //      var notification = new Notification(oneMessage.sender,{body:oneMessage.text,icon:'/images/blackbulletstransparent.png'});
+              //      setTimeout(notification.close.bind(notification), 5000);
+              //    }
            });
 
            vm.backToInbox=function(){
