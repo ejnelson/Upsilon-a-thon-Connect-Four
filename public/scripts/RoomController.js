@@ -231,6 +231,7 @@ angular.module("myApp").controller("RoomController", ['$location','$http','$scop
      //  console.log('fired scroll stuff', div.scrollTop, div.scrollHeight );
     });//end of then promise from get room users
    }// end of getmessages function
-
-  }
-]);
+   vm.goToGame=function(){
+     $location.path('/game');
+   }
+}]);

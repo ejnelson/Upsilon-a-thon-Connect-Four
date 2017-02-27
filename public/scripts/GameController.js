@@ -1,187 +1,209 @@
 angular.module("myApp").controller("GameController", ['$location','$http','addContactService','getContactService','editProfileService','usernameStoreService','roomViewService','Upload','themeService','$scope',
   function($location,$http,addContactService,getContactService,editProfileService,usernameStoreService,roomViewService,Upload,themeService,$scope) {
     console.log('game controller loaded');
-    var vm=this;
-
 
     var vm=this;
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var ballRadius = 10;
-    var x = canvas.width/2;
-    var y = canvas.height-30;
-    var dx = 2;
-    var dy = -2;
-    var paddleHeight = 75;
-    var paddleWidth = 10;
-    var paddleOneX = 0;
-    var paddleTwoX = canvas.width-10;
-    var paddleOneY = canvas.height/2;
-    var paddleTwoY = canvas.height/2;
-    var rightup = false;
-    var leftup = false;
-    var rightdown = false;
-    var leftdown = false;
+    vm.playerList=new Array;
+    vm.user=null;
+    vm.gameStart=false;
+    vm.countDownShow=false;
+    vm.gameOver=false;
 
-    var score1 = 0;
-    var score2 = 0;
 
-    document.getElementById("myCanvas").addEventListener("onmousedown", mouseDownHandler, false);
-    document.getElementById("myCanvas").addEventListener("onmouseup", mouseUpHandler, false);
-    //document.addEventListener("mousemove", mouseMoveHandler, false);
-    document.addEventListener("ontouchstart", mouseDownHandler, false);
-    document.addEventListener("ontouchend", mouseUpHandler, false);
-    function mouseDownHandler() {
-console.log('click');
-            leftup = true;
+    usernameStoreService.returnUsername().then(function(user){
+      console.log('user that needs to join',user);
+      vm.user=user;
 
-    }
-    function mouseUpHandler() {
 
-          leftup = false;
+    roomViewService.findRoomData().then(function(res){
 
-    }
-
-    document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
-    //document.addEventListener("mousemove", mouseMoveHandler, false);
-
-    function keyDownHandler(e) {
-        if(e.keyCode == 38) {
-            rightup = true;
-        }
-        else if(e.keyCode == 87) {
-            leftup = true;
-        }
-        else if(e.keyCode == 40) {
-            rightdown = true;
-        }
-        else if(e.keyCode == 83) {
-            leftdown = true;
-        }
-    }
-    function keyUpHandler(e) {
-      if(e.keyCode == 38) {
-          rightup = false;
+      let socket_connect = function (room) {
+        console.log('sockets is connecting to',room);
+        return io({
+            query: 'r_var='+room,
+            'forceNew': true
+        });
       }
-      else if(e.keyCode == 87) {
-          leftup = false;
-      }
-      else if(e.keyCode == 40) {
-          rightdown = false;
-      }
-      else if(e.keyCode == 83) {
-          leftdown = false;
-    }
-    }
-    //function mouseMoveHandler(e) {
-    //    var relativeX = e.clientX - canvas.offsetLeft;
-    //    if(relativeX > 0 && relativeX < canvas.width) {
-    //        paddleX = relativeX - paddleWidth/2;
-    //    }
-    //}
+
+      let roomId = res._id+'game';//will be res._id;
+       let socket      = socket_connect(roomId);
 
 
-    function drawBall() {
-        ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-    }
-    function drawPaddleOne() {
-        ctx.beginPath();
-        ctx.rect(paddleOneX, paddleOneY, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-    }
-    function drawPaddleTwo() {
-        ctx.beginPath();
-        ctx.rect(paddleTwoX, paddleTwoY, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    function drawScore1() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: "+score1, 8, 20);
-    }
-    function drawScore2() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: "+score2, canvas.width-65, 20);
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawBall();
-        drawPaddleOne();
-        drawPaddleTwo();
-        drawScore1();
-        drawScore2();
-
-        if(y + dy > canvas.height || y + dy < 0) {
-            dy = -dy;
+      socket.on('getUsers',function(){
+        if(vm.gameStart==false&&vm.countDownShow==false){
+          if(vm.playerList.length==0){
+            socket.emit('user join', vm.user);
+          }
         }
-        if(y + dy < paddleWidth) {
-            dy = -dy;
-        }
-        else if(x + dx > canvas.width-paddleWidth || x + dx < paddleWidth) {
-            if(x<canvas.width/2){
-                if(y > paddleOneY && y < paddleOneY + paddleHeight) {
-                  dx = -dx;
-                }
-                else {
-                    score2++;
+      });
 
+      socket.on('currentUsers',function(userList){
 
-                          x = canvas.width/2;
-                          y = canvas.height-30;
-                          dx = 3;
-                          dy = -3;
-                          paddleOneY = canvas.height/2;
-                          paddleTwoY = canvas.height/2;
+          angular.merge(vm.playerList,userList);
+          console.log('user list',userList);
+          console.log('vm.playerlist',vm.playerList);
+          $scope.$apply();
+          players=vm.playerList.length;
 
-                    }
+          for (var i=0;i<vm.playerList.length;i++) {
+              ready[vm.playerList[i]]=false;
+               scores[vm.playerList[i]]=0;
+
+          }
+
+          $scope.$apply();
+
+      });
+      // currentSocket=socket;
+      // socket.emit('chat message', 'hello room #'+roomId);
+      var scores={};
+      var players=null;
+      var ready={};
+      socket.on('user join', function(user){
+        console.log('userjoined',user);
+
+             vm.playerList.push(user);
+             players=vm.playerList.length;
+             console.log(vm.playerList);
+             $scope.$apply();
+             for (var i=0;i<vm.playerList.length;i++) {
+                ready[vm.playerList[i]]=false;
+                 scores[vm.playerList[i]]=0;
+
+             }
+             if(vm.playerList[vm.playerList.length-1]!=vm.user){
+               console.log('sending list',vm.playerList);
+               socket.emit('currentUsers',vm.playerList);
+             }
+
+      });
+      socket.on('leaveGame',function(user){
+        var index=vm.playerList.indexOf(user);
+        vm.playerList.splice(index,1);
+      });
+
+      vm.click=function(player){
+
+        if(vm.gameStart){
+          socket.emit('click',player);
+        }else{
+          if(player==vm.user){
+            if(ready[player]==true){
+              ready[player]=false;
+              socket.emit('not ready',vm.user);
             }else{
-              if(y > paddleTwoY && y < paddleTwoY + paddleHeight) {
-                dx = -dx;
-              }
-              else {
-                score1++;
-
-
-                      x = canvas.width/2;
-                      y = canvas.height-30;
-                      dx = 3;
-                      dy = -3;
-                      paddleOneY = canvas.height/2;
-                      paddleTwoY = canvas.height/2;
-                  }
-
+            socket.emit('ready',vm.user);
+            ready[player]=true;
             }
+          }
+        }
+      }
+      vm.countDown=function(){
+        vm.countDownShow=true;
+        vm.timeint=5;
+        $scope.$apply();
+        var time=setInterval(function(){
+          console.log('timer');
+          vm.timeint--;
+          $scope.$apply();
+          if(vm.timeint<=0){
+            clearInterval(time);
+            vm.countDownShow=false;
+            $scope.$apply();
+          }
+        },1000);
+        vm.gameStart=true;
+        rateIncreaser();
+      }
+      var myVar;
+      function rateIncreaser() {
+          myVar = setInterval(increaseRate, 1000);
+      }
+      var gameChangeRate=0
+      var increaseRate=function(){
+        gameChangeRate=gameChangeRate+0.5;
+        console.log('gameCHangeRate',gameChangeRate);
+      };
+
+      var countReady=0;
+      socket.on('user ready',function(player){
+        ready[player]=true;
+        $scope.$apply();
+        countReady++;
+        if(countReady>=vm.playerList.length&&vm.playerList.length>1){
+          vm.countDown();
+        }
+      });
+      socket.on('user not ready',function(player){
+        ready[player]=false;
+        $scope.$apply();
+        countReady--;
+      });
+
+
+
+
+
+      socket.on('click',function(player){
+
+        for (var key in scores) {
+          if (scores.hasOwnProperty(key)) {
+            console.log(key + " -> " + scores[key]);
+            scores[key]=scores[key]-(gameChangeRate/(players-1));
+          }
         }
 
-        if(rightup && paddleOneY < canvas.height-paddleHeight) {
-            paddleTwoY -= 7;
-        }
-        else if(rightdown && paddleOneY > 0) {
-            paddleTwoY += 7;
-        }
-        if(leftup && paddleTwoY < canvas.height-paddleHeight) {
-            paddleOneY -= 7;
-        }
-        else if(leftdown && paddleTwoY > 0) {
-            paddleOneY += 7;
-        }
-        x += dx;
-        y += dy;
-        requestAnimationFrame(draw);
-    }
+        scores[player]=scores[player]+(gameChangeRate/(players-1))+gameChangeRate;
+        $scope.$apply();
 
-    draw();
+        for(var playerScore in scores){
+          console.log('playerscore',scores[playerScore]);
+          if(scores[playerScore]>(100-(100/players))){
+            vm.gameOver=true;
+            vm.winner=playerScore;
+            clearInterval(myVar);
+            $scope.$apply();
+          }
+        }
+      });
+      vm.playAgain=function(){
+        vm.gameStart=false;
+        vm.countDownShow=false;
+        vm.gameOver=false;
+        for(var player in ready){
+          ready[player]=false;
+        };
+        for(var player in scores){
+          scores[player]=0;
+        }
+        countReady=0;
+        gameChangeRate=0;
+        clearInterval(myVar);
+      };
+      vm.playerStyle=function(player){
+        if(scores[player]){
+          var calculate=scores[player]+(100/(players));
+        }else{
+          var calculate=(100/(players));
+        }
+        if(ready[player]){
+          var bg='green';
+        }else{
+          var bg='yellow';
+        }
+        return {backgroundColor:bg, height: calculate+"%"};
+      }
+      vm.goToConvo=function(){
+        if(vm.gameStart==false&&vm.countDownShow==false){
+          socket.emit('leaveGame',vm.user);
+          $location.path('/roomView');
+          clearInterval(myVar);
+        }
+      }
+
+
+    });//end roomview service lookup
+
+  });//end userprofile search
 
 }]);

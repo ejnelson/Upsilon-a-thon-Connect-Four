@@ -360,7 +360,7 @@ z-index:2;
 margin-bottom:0px;
 background-color: #1f0077;
 padding:0px 10px;
-margin-top:10px;
+margin-top:0px;
 }
 #usersToAddToRoom li{
   display:inline;
@@ -380,7 +380,7 @@ margin-top:10px;
   width:100%;
   position:fixed;
   top:75px;
-  bottom:49px;
+  bottom:60px;
   display:flex;
   flex-direction: column-reverse;
 
@@ -748,4 +748,51 @@ width:100%;
   }
 
     /*---------------------------END photo view--------------------------*/
+    /*---------------------------game view--------------------------*/
+
+#playersContainer{
+  position:fixed;
+  top:0px;
+  height:100%;
+  width:100%;
+  background-color: white;
+
+}
+.player{
+  width:100%;
+  background-color:yellow;
+  font-size:20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-family:"leagueSpartan",serif;
+  box-shadow:inset 0px 0px 200px 10px rgba(0, 0, 0, 0.24);
+  border:3px solid white;
+}
+
+#countDown,#gameOver{
+  height:100%;
+  width:100%;
+  z-index:4;
+  position:fixed;
+  top:0px;
+  background-color: rgba(59, 59, 59, 0.83);
+  color:white;
+  font-size:100px;
+  line-height: 100%;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player p,#countDown p,#gameOver p{
+text-align: center;
+
+}
+
+    /*---------------------------END game view--------------------------*/
+
+
   }
+  /*media query bracket*/

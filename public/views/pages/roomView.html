@@ -1,4 +1,4 @@
-<header class="container-fluid" ng-init="roomCtrl.getMessages()">
+<header class="container-fluid" ng-init="roomCtrl.getMessages()" ng-swipe-left="roomCtrl.goToGame()">
   <button ng-click="roomCtrl.backToInbox()" class="col-xs-3 addButton fa fa-arrow-left"></button>
   <button ng-click="roomCtrl.photoView()" class="profileButton col-xs-3  fa fa-picture-o"></button>
 </header>

@@ -1,8 +1,20 @@
 
+<div id="playersContainer" ng-swipe-left="gameCtrl.goToConvo()">
+<div ng-style="gameCtrl.playerStyle(player)" class="player" ng-click="gameCtrl.click(player)" ng-repeat="player in gameCtrl.playerList ">
+    <p>
+      {{player}}
+    </p>
+  </div>
+</div>
+<div id="countDown" ng-show="gameCtrl.countDownShow">
+  <p>
+    {{gameCtrl.timeint}}
 
+  </p>
+</div>
+<div id="gameOver" ng-show="gameCtrl.gameOver" ng-swipe-left="gameCtrl.playAgain()">
+  <p>
 
-  <canvas id="myCanvas" width="400" height="320"></canvas>
-<script>
-
-  gameCtrl.runGame();
-</script>
+    {{gameCtrl.winner}} wins!
+  </p>
+</div>

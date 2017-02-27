@@ -1,4 +1,4 @@
-var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives','ngTouch']);
+var app=angular.module('myApp',['ngRoute','ngAnimate','ngFileUpload','luegg.directives','ngTouch','mn']);
 
 
 app.directive("repeatEnd", function(){
@@ -139,6 +139,22 @@ app.config(function($routeProvider,$locationProvider){
   }).when('/game',{
     templateUrl:'views/pages/game.html',
     controller:'GameController as gameCtrl',
+    resolve: {
+      _: function ($location,$http) {
+            $http.get('/loginStatus').then(function(res){
+              console.log('res.data, logged in =',res.data);
+              if(res.data){
+                console.log('user is logged in');
+                return;
+              }else {
+                console.log('user is not logged in');
+                //send them to the login view
+                // return false;
+                return $location.path('/');
+              }
+            })
+          }
+        }
   });
   $locationProvider.html5Mode(true);
 
