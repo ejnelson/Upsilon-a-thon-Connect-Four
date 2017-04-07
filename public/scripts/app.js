@@ -1,12 +1,13 @@
 
 
 angular
-  .module("connectFour")
+  .module('connectFour')
   .config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     $routeProvider
-      .when("/home", {
-        templateUrl: "views/index.html",
+      .when("/", {
+        templateUrl: "views/game.html",
         controller: "HomeController as home",
       });
+});
