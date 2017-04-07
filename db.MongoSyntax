@@ -5,3 +5,10 @@ use connect-four
 db.players.save({username:"player1"})
 db.players.save({username:"player2"})
 db.match.save({match:"1"})
+
+
+//Save Data to DB
+db.grid.save({color: black, x: 0, y: 0})
+
+//Return entire grid in array
+db.grid.find().pretty().toArray()
