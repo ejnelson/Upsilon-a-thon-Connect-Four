@@ -7,7 +7,15 @@ angular
 
     $routeProvider
       .when("/", {
-        templateUrl: "views/game.html",
+        templateUrl: "views/join.html",
+        controller: "HomeController as home",
+      })
+      .when("/gameplay", {
+        templateUrl: "views/gameplay.html",
+        controller: "HomeController as home",
+      })
+      .when("/gameover", {
+        templateUrl: "views/gameover.html",
         controller: "HomeController as home",
       });
 });

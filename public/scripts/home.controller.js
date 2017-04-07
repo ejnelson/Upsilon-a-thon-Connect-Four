@@ -2,7 +2,29 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
  var ctrl = this;
 
  console.log('Controller is loaded!');
+ var color=null;
 
- var socket = io.connect();
+
+ ctrl.join=function(){
+   $location.path('/gameplay');
+   var socket = io.connect();
+   socket.on('amountOfUsers',function(users){
+     if (users==1){
+       color='red';
+     }else if(users==2){
+       color='black';
+     }else{
+       color=null;
+     }
+     console.log('my color is',color);
+   });
+ };
+
+ socket.on('checkForWin',function(grid){
+
+
+ });
+
+
 
 });

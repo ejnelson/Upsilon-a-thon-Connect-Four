@@ -1,0 +1,7 @@
+mongo
+
+use connect-four
+
+db.players.save({username:"player1"})
+db.players.save({username:"player2"})
+db.match.save({match:"1"})
