@@ -27,4 +27,28 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
 
 
+
+
+ ctrl.dropCoin = function (column) {
+   // creates a coin object that can go to the db.
+   // var yValue = yValueCalculator(xvalue); // or yValueCalculator (bigArray, xvalue);
+
+   var coinObject = {
+     color: color, // TODO does this get the global color?
+     x: column,
+     y: yValue
+   };
+
+  // db.grid.save(coinObject)
+
+   return coinObject;
+ };
+
+
+
+
+
+
+
+
 });
