@@ -6,7 +6,7 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
 
  ctrl.join=function(){
-   $location.path('/inbox');
+   $location.path('/gameplay');
    var socket = io.connect();
    socket.on('amountOfUsers',function(users){
      if (users==1){
@@ -18,11 +18,12 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
      }
      console.log('my color is',color);
    });
-
-
-
-
  };
+
+ socket.on('checkForWin',function(grid){
+
+
+ });
 
 
 

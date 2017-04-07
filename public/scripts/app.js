@@ -10,8 +10,12 @@ angular
         templateUrl: "views/join.html",
         controller: "HomeController as home",
       })
-      .when("/game", {
-        templateUrl: "views/game.html",
+      .when("/gameplay", {
+        templateUrl: "views/gameplay.html",
+        controller: "HomeController as home",
+      })
+      .when("/gameover", {
+        templateUrl: "views/gameover.html",
         controller: "HomeController as home",
       });
 });
