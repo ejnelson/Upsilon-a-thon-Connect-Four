@@ -12,12 +12,13 @@ body {
 .gamePlayGrid, .playingFieldGrid {
   border-radius: 3px;
   border: 1px solid purple;
-
+  z-index: 10;
 }
 
 .gamePlayGrid {
   height: 600px;
   width: 700px;
+
 }
 
 
