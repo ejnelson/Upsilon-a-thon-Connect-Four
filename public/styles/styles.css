@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.gamePlayGrid, .playingFieldGrid {
+  border-radius: 3px;
+  border: 1px solid purple;
+
+}
+
+.gamePlayGrid {
+  height: 600px;
+  width: 700px;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+
+
+.dropFieldGrid {
+  border-radius: 50%;
+  background-color: green;
+  height: 80px;
+  width: 80px;
+  border: 10px solid black;
+  float: left;
+}
+
+.playingFieldGrid {
+  height: 80px;
+  width: 80px;
+  border: 10px solid yellow;
+  box-shadow:  0 0 0 1px black;
+  float: left;
+}
