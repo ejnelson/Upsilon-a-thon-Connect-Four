@@ -48,6 +48,9 @@ io.on('connection', function(socket){
   console.log('connections to sockets',Object.keys(srvSockets).length);
   io.emit('amountOfUsers',Object.keys(srvSockets).length);
 
+
+
+
 });
 
 

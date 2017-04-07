@@ -20,10 +20,135 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
    });
  };
 
- socket.on('checkForWin',function(grid){
+ ctrl.dropToken=function(column){ //function to call to drop a token
+   var dropObject={x:column,color:color};
+   socket.emit('token drop', dropObject);
+ }
+
+ var checkForWin=function(grid,token){
+   if(checkHorizontal(grid,token)||checkVertical(grid,token)||checkIncreaseDiag(grid,token)||checkDecreaseDiag(grid,token)){
+     return 'winner';
+   }
+
+ };
+ var checkHorizontal=function(grid,token){
+   var rowMatches=[];
+   for(var i=0;i<grid.length;i++){
+     if (grid[i].y==token.y&&grid[i].color==token.color){
+       rowMatches[grid[i].x]=grid[i].x;
+     }
+   }
+   var left=0;
+   for(var i=0;i<4;i++){
+     if(rowMatches[token.x+i]>-1){
+       left++;
+     }else{
+       i=5;
+     }
+   }
+   var right=0;
+   for(var i=0;i>-4;i--){
+     if(rowMatches[token.x+i]>-1){
+       right++;
+     }else{
+       i=-5;
+     }
+   }
+   if(left+right>3){
+     return true;
+   }else{
+     return false;
+   }
+
+ };
+ var checkVertical=function(grid,token){
+   var columnMatches=[];
+   for(var i=0; i<grid.length;i++){
+     if(grid[i].x==token.x&&grid[i].color==token.color){
+       columnMatches[grid[i].y]=grid[i].y;
+     }
+   }
+   var below=0;
+   for(var i=0;i>-4;i--){
+     if(columnMatches[token.y+i]>-1){
+       below++;
+     }else{
+       i=-5;
+     }
+   }
+   if(below>3){
+     return true;
+   }else{
+     return false;
+   }
+ };
+ var checkIncreaseDiag=function(grid,token){
+   var diagMatches=[];
+   for(var i=0; i<grid.length;i++){
+     if(grid[i].x-token.x==grid[i].y-token.y&&grid[i].color==token.color){
+       diagMatches[grid[i].x]=grid[i].x;
+     }
+   }
+
+   var left=0;
+   for(var i=0;i<4;i++){
+     if(rowMatches[token.x+i]>-1){
+       left++;
+     }else{
+       i=5;
+     }
+   }
+   var right=0;
+   for(var i=0;i>-4;i--){
+     if(rowMatches[token.x+i]>-1){
+       right++;
+     }else{
+       i=-5;
+     }
+   }
+   if(left+right>3){
+     return true;
+   }else{
+     return false;
+   }
 
 
- });
+
+
+
+
+ };
+ var checkDecreaseDiag=function(grid,token){
+   var diagMatches=[];
+   for(var i=0; i<grid.length;i++){
+     if(grid[i].x-token.x==token.y-grid[i].y&&grid[i].color==token.color){
+       diagMatches[grid[i].x]=grid[i].x;
+     }
+   }
+
+   var left=0;
+   for(var i=0;i<4;i++){
+     if(rowMatches[token.x+i]>-1){
+       left++;
+     }else{
+       i=5;
+     }
+   }
+   var right=0;
+   for(var i=0;i>-4;i--){
+     if(rowMatches[token.x+i]>-1){
+       right++;
+     }else{
+       i=-5;
+     }
+   }
+   if(left+right>3){
+     return true;
+   }else{
+     return false;
+   }
+ };
+
 
 
 
