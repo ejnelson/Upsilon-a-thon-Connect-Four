@@ -7,6 +7,10 @@ angular
 
     $routeProvider
       .when("/", {
+        templateUrl: "views/join.html",
+        controller: "HomeController as home",
+      })
+      .when("/game", {
         templateUrl: "views/game.html",
         controller: "HomeController as home",
       });
