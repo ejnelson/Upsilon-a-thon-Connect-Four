@@ -11,38 +11,42 @@
 
 <!-- row zero - drop row -->
 
-<div class="dropFieldGrid" ng-class="hoverClass0" ng-mouseenter="hoverClass0 = 'blue'" ng-mouseleave="hoverClass0=''" ng-click=home.dropCoin(0) ng-disabled="home.columnZeroFull">
+<div class="dropFieldGrid" ng-class="hoverClass0" ng-mouseenter="hoverClass0 = 'black'" ng-mouseleave="hoverClass0=''" ng-click=home.dropCoin(0) ng-disabled="home.columnZeroFull">
 
 
 </div>
 <div class="dropFieldGrid" ng-class="hoverClass1" ng-mouseenter="hoverClass1 = 'red'" ng-mouseleave="hoverClass1=''" ng-click="home.dropCoin(1)"  ng-disabled="home.columnZeroFull">
 2
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass2" ng-mouseenter="hoverClass2 = 'blue'" ng-mouseleave="hoverClass2=''" ng-click="home.dropCoin(2)"  ng-disabled="home.columnTwoFull">
+<div class="dropFieldGrid" ng-class="hoverClass2" ng-mouseenter="hoverClass2 = 'black'" ng-mouseleave="hoverClass2=''" ng-click="home.dropCoin(2)"  ng-disabled="home.columnTwoFull">
 3
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass3" ng-mouseenter="hoverClass3 = 'blue'" ng-mouseleave="hoverClass3=''" ng-click="home.dropCoin(3)"  ng-disabled="home.columnThreeFull">
+<div class="dropFieldGrid" ng-class="hoverClass3" ng-mouseenter="hoverClass3 = 'red'" ng-mouseleave="hoverClass3=''" ng-click="home.dropCoin(3)"  ng-disabled="home.columnThreeFull">
 4
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass4" ng-mouseenter="hoverClass4 = 'blue'" ng-mouseleave="hoverClass4=''" ng-click="home.dropCoin(4)"  ng-disabled="home.columnFourFull">
+<div class="dropFieldGrid" ng-class="hoverClass4" ng-mouseenter="hoverClass4 = 'black'" ng-mouseleave="hoverClass4=''" ng-click="home.dropCoin(4)"  ng-disabled="home.columnFourFull">
 5
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass5" ng-mouseenter="hoverClass5 = 'blue'" ng-mouseleave="hoverClass5=''" ng-click="home.dropCoin(5)"  ng-disabled="home.columnFiveFull">
+<div class="dropFieldGrid" ng-class="hoverClass5" ng-mouseenter="hoverClass5 = 'black'" ng-mouseleave="hoverClass5=''" ng-click="home.dropCoin(5)"  ng-disabled="home.columnFiveFull">
 6
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass6" ng-mouseenter="hoverClass6 = 'blue'" ng-mouseleave="hoverClass6=''" ng-click="home.dropCoin(6)"  ng-disabled="home.columnSixFull">
+<div class="dropFieldGrid" ng-class="hoverClass6" ng-mouseenter="hoverClass6 = 'black'" ng-mouseleave="hoverClass6=''" ng-click="home.dropCoin(6)"  ng-disabled="home.columnSixFull">
 7
 </div>
 
 
-
+<div ng-repeat="x in home.array">
+  <div ng-repeat="y in x" ng-class="{{home.array[x][y]}}">
+    
+  </div>
+</div>
 
 <!-- ng-class="{blue: (somthing == blue), red: (something==red) }"
 https://docs.angularjs.org/api/ng/directive/ngClass -->
 
 
 <!-- row one -->
-  <div class="playingFieldGrid" id="5-0">
+  <!-- <div class="playingFieldGrid" id="5-0">
 a
   </div>
   <div class="playingFieldGrid" id="5-1">
@@ -62,11 +66,11 @@ e
   </div>
   <div class="playingFieldGrid" id="5-6">
 
-  </div>
+  </div> -->
 
 <!-- row two -->
 
-  <div class="playingFieldGrid" id="4-0">
+  <!-- <div class="playingFieldGrid" id="4-0">
 a
   </div>
   <div class="playingFieldGrid" id="5-1">
@@ -86,11 +90,11 @@ e
   </div>
   <div class="playingFieldGrid" id="4-6">
 
-  </div>
+  </div> -->
 
 <!-- row three -->
 
-  <div class="playingFieldGrid" id="3-0">
+  <!-- <div class="playingFieldGrid" id="3-0">
 a
   </div>
   <div class="playingFieldGrid" id="3-1">
@@ -110,11 +114,11 @@ e
   </div>
   <div class="playingFieldGrid" id="3-6">
 
-  </div>
+  </div> -->
 
 <!-- row four -->
 
-  <div class="playingFieldGrid" id="2-0">
+  <!-- <div class="playingFieldGrid" id="2-0">
 a
   </div>
   <div class="playingFieldGrid" id="2-1">
@@ -134,12 +138,12 @@ e
   </div>
   <div class="playingFieldGrid" id="2-6">
 
-  </div>
+  </div> -->
 
 
 
 <!-- row five -->
-  <div class="playingFieldGrid" id="1-0">
+  <!-- <div class="playingFieldGrid" id="1-0">
 a
   </div>
   <div class="playingFieldGrid" id="1-1">
@@ -159,12 +163,12 @@ e
   </div>
   <div class="playingFieldGrid" id="1-6">
 
-  </div>
+  </div> -->
 
 
 <!-- row six -->
 
-  <div class="playingFieldGrid" id="0-0">
+  <!-- <div class="playingFieldGrid" id="0-0">
 a
   </div>
   <div class="playingFieldGrid" id="0-1">
@@ -184,7 +188,7 @@ e
   </div>
   <div class="playingFieldGrid" id="0-6">
 
-  </div>
+  </div> -->
 
 
 
