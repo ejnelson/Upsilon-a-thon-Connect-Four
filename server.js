@@ -58,8 +58,8 @@ io.on('connection', function(socket){
 
 
     var latestObject={
-                      winner:
-                      token:
+                      winner:win,
+                      token:tokenobjectthing
                       }
     io.emit('latest',latestObject);
   });

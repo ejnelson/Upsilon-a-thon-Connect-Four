@@ -19,6 +19,22 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
      }
      console.log('my color is',color);
    });
+   socket.on('latest',function(latestObject){
+     if(latestObject.win){
+       if (latestObject.win==color){
+         alert('you win');
+       }else{
+         alert('you lose');
+       }
+     }
+     if(latestObject.token.color==color){
+       ctrl.myTurn=true;
+     }else{
+       ctrl.myTurn=false;
+     }
+     // ADD logic to update bill and tyler's DOM array
+
+   });
  };
 
  ctrl.dropToken=function(column){ //function to call to drop a token
@@ -26,23 +42,10 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
    socket.emit('token drop', dropObject);
  }
 
- socket.on('latest',function(latestObject){
-   if(latestObject.win){
-     if (latestObject.win==color){
-       alert('you win');
-     }else{
-       alert('you lose');
-     }
-   }
-   if(latestObject.token.color==color){
-     ctrl.myTurn=true;
-   }else{
-     ctrl.myTurn=false;
-   }
 
-   // ADD logic to update bill and tyler's DOM array
 
- });
+
+
 
  var checkForWin=function(grid,token){
    if(checkHorizontal(grid,token)||checkVertical(grid,token)||checkIncreaseDiag(grid,token)||checkDecreaseDiag(grid,token)){
@@ -247,7 +250,7 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
 
 
-var ctrl.array = [  [ 'red', 'red', 'black', 'blank', 'black', 'red', 'blank'],
+ctrl.array = [  [ 'red', 'red', 'black', 'blank', 'black', 'red', 'blank'],
                     [ 'blank', 'blank', 'blank', 'blank', 'black', 'blank', 'blank'],
                     [ 'blank', 'blank', 'red', 'blank', 'blank', 'blank', 'blank'],
                     [ 'blank', 'red', 'blank', 'blank', 'blank', 'blank', 'blank'],
