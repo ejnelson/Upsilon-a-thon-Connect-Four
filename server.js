@@ -18,7 +18,7 @@ var session=require('express-session');
 
 var path = require('path');
 var bodyParser = require('body-parser');
-
+var Grid = require('./db/grid');
 
 
 
@@ -67,6 +67,23 @@ io.on('connection', function(socket){
  res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
  });
 
+ var getGrid = function(){
+   Grid.find({}, function(err, grid){
+     if(err){
+       res.sendStatus(500);
+       return;
+     }
+     var grid = grid;
+     console.log(grid);
+     return grid;
+   });
+ };
+
+ var updateGrid = function(newToken){
+
+ }
+
+ getGrid();
 
 http.listen(process.env.PORT || 3000, function(){
   console.log('listening on *:3000');
