@@ -53,10 +53,6 @@ io.on('connection', function(socket){
 
 });
 
-  // **** Below are test grid and token for when we arent connected to DB
-// var grid = [{x: 1, y: 0, color: "black"}, {x: 1, y: 1, color: "black"}, {x: 1, y: 2, color: "black"}, {x: 1, y: 3, color: "black"}, {x: 1, y: 4, color: "black"}, {x: 0, y: 0, color: "black"}, {x: 2, y: 0, color: "black"}, {x: 3, y: 0, color: "black"}];
-// var latestObject = {x: 1, color: "black"};
-
 
 var checkY = function (latestObject, grid) {
   var xArray = []; // array that holds any coordinates with matching x value
@@ -83,8 +79,6 @@ var checkY = function (latestObject, grid) {
   console.log("token to send is ", tokenToSend);
   socket.emit("latest token dropped", tokenToSend);
 }
-
-checkY(latestObject, grid);
 
 
 
