@@ -73,17 +73,23 @@ io.on('connection', function(socket){
        res.sendStatus(500);
        return;
      }
-     var grid = grid;
      console.log(grid);
      return grid;
    });
  };
 
  var updateGrid = function(newToken){
-
+   var grid = new Grid(newToken);
+   grid.save(function(err){
+     if(err){
+       console.log(err);
+       res.sendStatus(500);
+       return;
+     }
+     console.log('created');
+   });
  }
 
- getGrid();
 
 http.listen(process.env.PORT || 3000, function(){
   console.log('listening on *:3000');
