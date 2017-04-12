@@ -1,3 +1,7 @@
+body {
+  background-color: ghostwhite;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -8,36 +12,48 @@
 .gamePlayGrid, .playingFieldGrid {
   border-radius: 3px;
   border: 1px solid purple;
-
+  z-index: 10;
 }
 
 .gamePlayGrid {
   height: 600px;
   width: 700px;
+
 }
 
-.blue{
-  background-color: blue;
-}
 
-.red {
-  background-color: red;
-}
 
 
 .dropFieldGrid {
   border-radius: 50%;
-  background-color: green;
-  height: 80px;
-  width: 80px;
-  border: 10px solid black;
+  /*background-color: green;*/
+  height: 98px;
+  width: 98px;
+  border: 1px solid black;
+  box-shadow: inset 0 0 0 1px yellow;
   float: left;
 }
+
+.blue {
+  background-color: blue;
+  box-shadow: inset 0 0 0 3px darkblue;
+}
+
+.red {
+  background-color: red;
+  box-shadow: inset 0 0 0 3px darkred;
+}
+
+.dropFieldGrid:hover {
+
+}
+
+
 
 .playingFieldGrid {
   height: 80px;
   width: 80px;
   border: 10px solid yellow;
-  box-shadow:  0 0 0 1px black;
+  box-shadow:  0 0 0 2px gold;
   float: left;
 }
