@@ -45,7 +45,8 @@ io.on('connection', function(socket){
   socket.on('token drop',function(tokenObject){
 
 
-    var grid=getGrid();
+    getGrid().then(function(grid){
+    console.log("token drop level grid", grid);
     var tokenToSend=checkY(tokenObject,grid);
     updateGrid(tokenToSend);
     var win=null;
@@ -59,7 +60,7 @@ io.on('connection', function(socket){
                     };
     io.emit('latest',latestObject);
   });
-
+  });
 });
 
 
@@ -105,15 +106,23 @@ var checkY = function (latestObject, grid) {
  });
 
  var getGrid = function(){
-   Grid.find({}, function(err, grid){
+   return new Promise(function(resolve,reject){
+    var gridToReturn;
+    resolve(Grid.find({}, function(err, grid){
      if(err){
+       console.log(err);
        res.sendStatus(500);
        return;
      }
      console.log(grid);
-     return grid;
+
+       return grid;
+     }));
+
    });
  };
+
+ getGrid();
 
  var updateGrid = function(newToken){
    var grid = new Grid(newToken);
@@ -133,6 +142,7 @@ var checkY = function (latestObject, grid) {
 
 
   var checkForWin=function(grid,token){
+    console.log('here is the grid and token for check win',grid,token);
     if(checkHorizontal(grid,token)||checkVertical(grid,token)||checkIncreaseDiag(grid,token)||checkDecreaseDiag(grid,token)){
       return true;
     }else{
@@ -201,7 +211,7 @@ var checkY = function (latestObject, grid) {
 
     var left=0;
     for(var i=0;i<4;i++){
-      if(rowMatches[token.x+i]>-1){
+      if(diagMatches[token.x+i]>-1){
         left++;
       }else{
         i=5;
@@ -209,7 +219,7 @@ var checkY = function (latestObject, grid) {
     }
     var right=0;
     for(var i=0;i>-4;i--){
-      if(rowMatches[token.x+i]>-1){
+      if(diagMatches[token.x+i]>-1){
         right++;
       }else{
         i=-5;
@@ -237,7 +247,7 @@ var checkY = function (latestObject, grid) {
 
     var left=0;
     for(var i=0;i<4;i++){
-      if(rowMatches[token.x+i]>-1){
+      if(diagMatches[token.x+i]>-1){
         left++;
       }else{
         i=5;
@@ -245,7 +255,7 @@ var checkY = function (latestObject, grid) {
     }
     var right=0;
     for(var i=0;i>-4;i--){
-      if(rowMatches[token.x+i]>-1){
+      if(diagMatches[token.x+i]>-1){
         right++;
       }else{
         i=-5;

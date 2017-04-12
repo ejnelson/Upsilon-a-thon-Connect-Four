@@ -20,8 +20,9 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
      console.log('my color is',color);
    });
    socket.on('latest',function(latestObject){
-     if(latestObject.win){
-       if (latestObject.win==color){
+     console.log('this is the latest object',latestObject);
+     if(latestObject.winner){
+       if (latestObject.winner==color){
          alert('you win');
        }else{
          alert('you lose');
