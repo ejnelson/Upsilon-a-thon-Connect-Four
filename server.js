@@ -15,6 +15,7 @@ var io = require('socket.io')(http);
 
 var connection = require('./db/connection');
 var session=require('express-session');
+var Grid=require('./db/grid')
 
 var path = require('path');
 var bodyParser = require('body-parser');

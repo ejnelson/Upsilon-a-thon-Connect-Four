@@ -3,12 +3,12 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
  console.log('Controller is loaded!');
  var color=null;
- var socket;
+ var socket=io.connect();;
  ctrl.myTurn=true;
 
- ctrl.join=function(){
+ // ctrl.join=function(){
    $location.path('/gameplay');
-   socket = io.connect();
+  //  socket = io.connect();
    socket.on('amountOfUsers',function(users){
      if (users==1){
        color='red';
@@ -35,7 +35,7 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
      // ADD logic to update bill and tyler's DOM array
 
    });
- };
+ // };
 
  ctrl.dropToken=function(column){ //function to call to drop a token
    var dropObject={x:column,color:color};

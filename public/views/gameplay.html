@@ -11,32 +11,35 @@
 
 <!-- row zero - drop row -->
 
-<div class="dropFieldGrid" ng-class="hoverClass0" ng-mouseenter="hoverClass0 = 'black'" ng-mouseleave="hoverClass0=''" ng-click=home.dropCoin(0) ng-disabled="home.columnZeroFull">
+<div class="dropFieldGrid" ng-class="hoverClass0" ng-mouseenter="hoverClass0 = 'black'" ng-mouseleave="hoverClass0=''" ng-click=home.dropToken(0) ng-disabled="home.columnZeroFull||!home.myTurn">
 
 
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass1" ng-mouseenter="hoverClass1 = 'red'" ng-mouseleave="hoverClass1=''" ng-click="home.dropCoin(1)"  ng-disabled="home.columnZeroFull||!home.myTurn">
-2
+<div class="dropFieldGrid" ng-class="hoverClass1" ng-mouseenter="hoverClass1 = 'red'" ng-mouseleave="hoverClass1=''" ng-click="home.dropToken(1)"  ng-disabled="home.columnOneFull||!home.myTurn">
+
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass2" ng-mouseenter="hoverClass2 = 'blue'" ng-mouseleave="hoverClass2=''" ng-click="home.dropCoin(2)"  ng-disabled="home.columnTwoFull||!home.myTurn">
-3
+<div class="dropFieldGrid" ng-class="hoverClass2" ng-mouseenter="hoverClass2 = 'black'" ng-mouseleave="hoverClass2=''" ng-click="home.dropToken(2)"  ng-disabled="home.columnTwoFull||!home.myTurn">
+
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass3" ng-mouseenter="hoverClass3 = 'blue'" ng-mouseleave="hoverClass3=''" ng-click="home.dropCoin(3)"  ng-disabled="home.columnThreeFull||!home.myTurn">
-4
+<div class="dropFieldGrid" ng-class="hoverClass3" ng-mouseenter="hoverClass3 = 'red'" ng-mouseleave="hoverClass3=''" ng-click="home.dropToken(3)"  ng-disabled="home.columnThreeFull||!home.myTurn">
+
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass4" ng-mouseenter="hoverClass4 = 'blue'" ng-mouseleave="hoverClass4=''" ng-click="home.dropCoin(4)"  ng-disabled="home.columnFourFull||!home.myTurn">
-5
+<div class="dropFieldGrid" ng-class="hoverClass4" ng-mouseenter="hoverClass4 = 'black'" ng-mouseleave="hoverClass4=''" ng-click="home.dropToken(4)"  ng-disabled="home.columnFourFull||!home.myTurn">
+
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass5" ng-mouseenter="hoverClass5 = 'blue'" ng-mouseleave="hoverClass5=''" ng-click="home.dropCoin(5)"  ng-disabled="home.columnFiveFull||!home.myTurn">
-6
+<div class="dropFieldGrid" ng-class="hoverClass5" ng-mouseenter="hoverClass5 = 'black'" ng-mouseleave="hoverClass5=''" ng-click="home.dropToken(5)"  ng-disabled="home.columnFiveFull||!home.myTurn">
+
 </div>
-<div class="dropFieldGrid" ng-class="hoverClass6" ng-mouseenter="hoverClass6 = 'blue'" ng-mouseleave="hoverClass6=''" ng-click="home.dropCoin(6)"  ng-disabled="home.columnSixFull||!home.myTurn">
-7
+<div class="dropFieldGrid" ng-class="hoverClass6" ng-mouseenter="hoverClass6 = 'black'" ng-mouseleave="hoverClass6=''" ng-click="home.dropToken(6)"  ng-disabled="home.columnSixFull||!home.myTurn">
+
 </div>
 
 
-<div ng-repeat="x in home.array">
-  <div ng-repeat="y in x" ng-class="{{home.array[x][y]}}">
+<div ng-repeat="x in home.array | orderBy:x:reverse">
+  <div ng-repeat="y in x track by $index" class="{{y}}" >
+    <div class="playingFieldGrid">
+
+    </div>
 
   </div>
 </div>
