@@ -4,3 +4,4 @@ node_modules
 public/scripts/client.min.js
 .env
 gruntfile.js
+*.log

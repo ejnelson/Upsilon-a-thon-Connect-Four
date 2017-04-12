@@ -6,6 +6,6 @@ const gridSchema = new mongoose.Schema({
   y: Number
 });
 
-const Match = mongoose.model('Grid', gridSchema);
+const Grid = mongoose.model('Grid', gridSchema);
 
 module.exports = Grid;

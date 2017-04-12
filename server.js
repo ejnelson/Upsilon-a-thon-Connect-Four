@@ -82,7 +82,6 @@ var checkY = function (latestObject, grid) {
   tokenToSend.color = latestObject.color;
   console.log("token to send is ", tokenToSend);
   socket.emit("latest token dropped", tokenToSend);
-  highestY = 0; // resets highestY to 0 for further checks
 }
 
 checkY(latestObject, grid);
