@@ -40,6 +40,8 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
      ctrl.myTurn=false;
    }
 
+   // ADD logic to update bill and tyler's DOM array
+
  });
 
  var checkForWin=function(grid,token){
