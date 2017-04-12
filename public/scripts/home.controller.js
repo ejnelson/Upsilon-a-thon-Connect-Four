@@ -247,4 +247,13 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
 
 
+var ctrl.array = [  [ 'red', 'red', 'black', 'blank', 'black', 'red', 'blank'],
+                    [ 'blank', 'blank', 'blank', 'blank', 'black', 'blank', 'blank'],
+                    [ 'blank', 'blank', 'red', 'blank', 'blank', 'blank', 'blank'],
+                    [ 'blank', 'red', 'blank', 'blank', 'blank', 'blank', 'blank'],
+                    [ 'blank', 'red', 'blank', 'blank', 'blank', 'blank', 'blank'],
+                    [ 'blank', 'black', 'blank', 'blank', 'blank', 'blank', 'blank'] ];
+
+
+
 });
