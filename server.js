@@ -94,6 +94,28 @@ var checkY = function (latestObject, grid) {
  res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
  });
 
+ var getGrid = function(){
+   Grid.find({}, function(err, grid){
+     if(err){
+       res.sendStatus(500);
+       return;
+     }
+     console.log(grid);
+     return grid;
+   });
+ };
+
+ var updateGrid = function(newToken){
+   var grid = new Grid(newToken);
+   grid.save(function(err){
+     if(err){
+       console.log(err);
+       res.sendStatus(500);
+       return;
+     }
+     console.log('created');
+   });
+ }
 
 http.listen(process.env.PORT || 3000, function(){
   console.log('listening on *:3000');
