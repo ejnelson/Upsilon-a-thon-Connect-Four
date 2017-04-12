@@ -49,7 +49,20 @@ io.on('connection', function(socket){
   io.emit('amountOfUsers',Object.keys(srvSockets).length);
 
 
+  socket.on('token drop',function(tokenObject){
 
+
+
+
+
+
+
+    var latestObject={
+                      winner:
+                      token:
+                      }
+    io.emit('latest',latestObject);
+  });
 
 });
 

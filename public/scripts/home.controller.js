@@ -3,11 +3,12 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
 
  console.log('Controller is loaded!');
  var color=null;
-
+ var socket;
+ ctrl.myTurn=true;
 
  ctrl.join=function(){
    $location.path('/gameplay');
-   var socket = io.connect();
+   socket = io.connect();
    socket.on('amountOfUsers',function(users){
      if (users==1){
        color='red';
@@ -24,6 +25,22 @@ angular.module('connectFour').controller('HomeController', function($http, $scop
    var dropObject={x:column,color:color};
    socket.emit('token drop', dropObject);
  }
+
+ socket.on('latest',function(latestObject){
+   if(latestObject.win){
+     if (latestObject.win==color){
+       alert('you win');
+     }else{
+       alert('you lose');
+     }
+   }
+   if(latestObject.token.color==color){
+     ctrl.myTurn=true;
+   }else{
+     ctrl.myTurn=false;
+   }
+
+ });
 
  var checkForWin=function(grid,token){
    if(checkHorizontal(grid,token)||checkVertical(grid,token)||checkIncreaseDiag(grid,token)||checkDecreaseDiag(grid,token)){
