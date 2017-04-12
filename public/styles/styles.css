@@ -35,10 +35,11 @@ body {
 }
 
 
-.black .red .blank {
+.black, .red, .blank {
   border-radius: 50%;
-  height: 98px;
-  width: 98px;
+  height: 100px;
+  width: 100px;
+  float: left;
 }
 
 .black {
@@ -49,6 +50,7 @@ body {
 .red {
   background-color: red;
   box-shadow: inset 0 0 0 3px darkred;
+  /*z-index: 30;*/
 }
 
 .blank {
@@ -67,5 +69,5 @@ body {
   border: 10px solid yellow;
   box-shadow:  0 0 0 2px gold;
   float: left;
-  z-index: 10;
+  /*z-index: 10;*/
 }

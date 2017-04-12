@@ -35,9 +35,11 @@
 </div>
 
 
-<div ng-repeat="x in home.array">
-  <div ng-repeat="y in x" ng-class="{{home.array[x][y]}}">
-    
+<div ng-repeat="x in home.array | orderBy:x:reverse">
+  <div ng-repeat="y in x track by $index" class="{{y}}" >
+    <div class="playingFieldGrid">
+
+    </div>
   </div>
 </div>
 
