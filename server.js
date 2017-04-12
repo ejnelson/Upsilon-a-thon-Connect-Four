@@ -18,7 +18,7 @@ var session=require('express-session');
 
 var path = require('path');
 var bodyParser = require('body-parser');
-var Grid = require('./db/grid');
+
 
 
 
@@ -52,6 +52,33 @@ io.on('connection', function(socket){
 
 
 });
+
+
+var checkY = function (latestObject, grid) {
+  var xArray = []; // array that holds any coordinates with matching x value
+  var tokenToSend = {}; // object to send back
+  var highestY = 0; // used to find the current highest Y value
+
+  console.log("latest token dropped is ", latestObject);
+  if (grid) {
+    console.log("grid received", grid);
+  }
+  grid.forEach(function(coord) {
+    if (latestObject.x == coord.x) {
+      xArray.push(coord)
+    }
+  });
+  xArray.forEach(function(xMatch) {
+    if (xMatch.y > highestY) {
+      highestY = xMatch.y;
+    }
+  });
+  tokenToSend.y = highestY + 1;
+  tokenToSend.x = latestObject.x;
+  tokenToSend.color = latestObject.color;
+  console.log("token to send is ", tokenToSend);
+  socket.emit("latest token dropped", tokenToSend);
+}
 
 
 
@@ -89,7 +116,6 @@ io.on('connection', function(socket){
      console.log('created');
    });
  }
-
 
 http.listen(process.env.PORT || 3000, function(){
   console.log('listening on *:3000');
